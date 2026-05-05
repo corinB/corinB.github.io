@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion } from 'framer-motion';
 
-export default function ProjectCard({ project, index, onOpen }) {
+export default function AboutCard({ item, index, onOpen }) {
   const [isHovered, setIsHovered] = useState(false);
 
   return (
@@ -9,7 +9,7 @@ export default function ProjectCard({ project, index, onOpen }) {
       className={`flex flex-col bg-[var(--bg-elev)] rounded-xl text-left transition-all duration-300 relative overflow-hidden h-full group border ${isHovered ? 'border-[var(--accent)] shadow-[0_0_30px_var(--accent-ring)] -translate-y-1' : 'border-[var(--border)] shadow-xl'}`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      onClick={() => onOpen(project)}
+      onClick={() => onOpen(item)}
       style={{ cursor: 'pointer' }}
     >
       {/* Terminal Mac Header */}
@@ -20,7 +20,7 @@ export default function ProjectCard({ project, index, onOpen }) {
           <div className="w-3 h-3 rounded-full transition-colors" style={{ backgroundColor: isHovered ? '#27c93f' : '#374151' }} />
         </div>
         <div className="mx-auto text-[11px] font-mono font-bold tracking-widest text-[var(--text-faint)]">
-          project_{index + 1}.sh
+          {item.id}.sh
         </div>
       </div>
 
@@ -28,46 +28,25 @@ export default function ProjectCard({ project, index, onOpen }) {
         {/* Command Line */}
         <div className="mb-5 flex flex-wrap items-center text-sm">
           <span className="text-[var(--accent)] font-bold mr-2">root@dev:</span>
-          <span className="text-[var(--accent-2)] mr-2">~/projects</span>
+          <span className="text-[var(--accent-2)] mr-2">~/profile</span>
           <span className="text-[var(--text-faint)] mr-2">$</span>
-          <span className="text-[var(--text)] font-bold">./inspect</span>
-          <span className="text-[var(--text)] ml-2 font-bold text-lg border-b-2 border-[var(--accent)]">{project.name}</span>
+          <span className="text-[var(--text)] font-bold">./view</span>
+          <span className="text-[var(--text)] ml-2 font-bold text-lg border-b-2 border-[var(--accent)] uppercase tracking-tighter">{item.id}</span>
         </div>
 
-        {/* Output */}
+        {/* Preview Output */}
         <div className="space-y-4 mb-6">
           <div className="flex items-start gap-3">
-            <span className="text-[var(--accent-2)] shrink-0 font-bold text-xs mt-1 tracking-widest">[ROLE]</span>
-            <span className="text-[var(--text)] text-[14px] leading-relaxed">{project.lead || 'Backend Developer'}</span>
+            <span className="text-[var(--accent-2)] shrink-0 font-bold text-xs mt-1 tracking-widest">[TITLE]</span>
+            <span className="text-[var(--text)] text-[14px] leading-relaxed font-bold">{item.title}</span>
           </div>
           
           <div className="flex items-start gap-3">
-            <span className="text-[var(--accent-3)] shrink-0 font-bold text-xs mt-1 tracking-widest">[DESC]</span>
-            <span className="text-[var(--text-muted)] text-[14px] leading-relaxed line-clamp-2">
-              {project.period && !project.period.includes('[') ? project.summary : project.summary}
+            <span className="text-[var(--accent-3)] shrink-0 font-bold text-xs mt-1 tracking-widest">[CONTENT]</span>
+            <span className="text-[var(--text-muted)] text-[14px] leading-relaxed line-clamp-3">
+              {item.content}
             </span>
           </div>
-
-          <div className="flex items-start gap-3">
-            <span className="text-[var(--accent)] shrink-0 font-bold text-xs mt-1 tracking-widest">[PERF]</span>
-            <span className="text-[var(--text)] text-[14px] leading-relaxed line-clamp-2">
-              {project.highlights?.[0] || '퍼포먼스 개선 및 안정성 향상'}
-            </span>
-          </div>
-        </div>
-
-        {/* Stack Preview */}
-        <div className="flex flex-wrap gap-2 mt-auto mb-6 pl-3 border-l-2 border-[var(--border)]">
-          {project.stack?.slice(0, 5).map(t => (
-            <span key={t} className="text-[12px] font-medium text-[var(--text-faint)] hover:text-[var(--accent)] transition-colors">
-              #{t.replace(/\s+/g, '')}
-            </span>
-          ))}
-          {project.stack?.length > 5 && (
-            <span className="text-[12px] font-medium text-[var(--text-faint)]">
-              +{project.stack.length - 5}
-            </span>
-          )}
         </div>
 
         {/* Actions */}
@@ -77,21 +56,12 @@ export default function ProjectCard({ project, index, onOpen }) {
             className={`font-bold text-sm transition-colors flex items-center gap-2 ${isHovered ? 'text-[var(--accent)]' : 'text-[var(--text-muted)]'}`}
             onClick={(e) => {
               e.stopPropagation();
-              onOpen(project);
+              onOpen(item);
             }}
           >
-            <span className="text-[var(--text-faint)]">{">"}</span> ./view_details.sh 
+            <span className="text-[var(--text-faint)]">{">"}</span> ./inspect.sh 
             <span className={`w-2 h-4 bg-[var(--accent)] inline-block transition-opacity ${isHovered ? 'opacity-100 animate-pulse' : 'opacity-0'}`} />
           </button>
-          <a
-            href={project.repo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[var(--text-muted)] hover:text-[var(--text)] font-bold text-sm transition-colors flex items-center gap-2"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span className="text-[var(--text-faint)]">{">"}</span> ./github.sh
-          </a>
         </div>
       </div>
     </div>

@@ -9,28 +9,58 @@ export const projects = [
     lead: 'PO · 팀장',
     stack: [
       'Java 21',
-      'Spring Boot 4',
-      'PostgreSQL',
-      'Redis',
-      'AWS ElastiCache',
-      'Kafka',
-      'Elasticsearch',
-      'Quartz Scheduler',
-      'Spring AI',
-      'Kubernetes',
-      'Docker',
-      'GitHub Actions',
+      'Spring Boot 4.0.4',
+      'Spring Cloud Gateway',
+      'PostgreSQL 18 (JPA/Hibernate)',
+      'Redis 7 (Counters/Queue)',
+      'Apache Kafka (KRaft)',
+      'Elasticsearch 8 (nori)',
+      'Quartz Clustered',
+      'Spring Batch 5',
+      'Spring AI (OpenAI)',
+      'ffmpeg (HLS Streaming)',
+      'Docker Compose',
+      'GitHub Actions CI/CD',
     ],
     architectureDiagram: `
-graph TD
-  A[Client] -->|HTTP Request| B(API Gateway)
-  B --> C{Load Balancer}
-  C --> D[Ticket Service]
-  C --> E[Streaming Service]
-  D --> F[(PostgreSQL)]
-  D --> G[(Redis)]
-  E --> H[Kafka]
-  H --> I[Elasticsearch]
+flowchart LR
+    Client[Client / FE]
+    GW[gateway :8000]
+
+    Client -->|JWT| GW
+
+    subgraph SERVICES[Backend Services]
+        Creator[creator :8080]
+        Payment[payment :8081]
+        Settlement[settlement :8083]
+        Ticket[ticket :8084]
+        User[user :8085]
+        Movie[movie :8086]
+        Streaming[streaming :8088]
+        AI[ai :8089]
+    end
+
+    GW --> Creator
+    GW --> Payment
+    GW --> Settlement
+    GW --> Ticket
+    GW --> User
+    GW --> Movie
+    GW --> Streaming
+    GW --> AI
+
+    Ticket -. HTTP cookie deduct/refund .-> User
+    Settlement -. HTTP settle .-> Creator
+    Streaming -. HTTP movie location .-> Creator
+
+    KAFKA[(Apache Kafka)]
+    Creator <--> KAFKA
+    Payment <--> KAFKA
+    Ticket <--> KAFKA
+    User <--> KAFKA
+    Movie <--> KAFKA
+    Streaming <--> KAFKA
+    AI <--> KAFKA
     `,
     highlights: [
       'MSA 9개 서비스 + Kafka 비동기 메시징',
@@ -57,14 +87,52 @@ graph TD
     lead: 'PO · 팀장',
     stack: [
       'Java 21',
-      'Spring Boot 3.5',
+      'Spring Boot 3.5.10',
       'Spring Batch 5',
-      'PostgreSQL+PostGIS',
-      'Redis Cluster',
-      'AWS ElastiCache',
-      'AWS',
-      'Docker',
+      'PostgreSQL 16 + PostGIS',
+      'Redis 7 Cluster',
+      'Spring Cloud OpenFeign',
+      'Toss Payments',
+      'AWS (RDS/ElastiCache/S3)',
+      'Nginx / Docker',
+      'GitHub Actions CI/CD',
     ],
+    architectureDiagram: `
+graph TD
+    subgraph Client_Layer ["Client (React 19)"]
+        Client["localhost:5173 / Vercel"]
+    end
+
+    Client -- "/api (Vite proxy / Nginx 443)" --> SpringBoot
+
+    subgraph SpringBoot ["Spring Boot 3.5.10 (Port 8080)"]
+        direction TB
+        Filter["JwtAuthenticationFilter"]
+        Controllers["Controllers"]
+        Services["Services"]
+        
+        Filter --> Controllers
+        Controllers --> Services
+    end
+
+    subgraph Storage_Layer ["Data & File Storage"]
+        Redis[("Redis Cluster<br/>(Cache, GEO, Pub/Sub)")]
+        PostgreSQL[("PostgreSQL 16<br/>+ PostGIS")]
+        S3[("AWS S3 / MinIO<br/>(File Store)")]
+    end
+
+    subgraph External_API ["External Services"]
+        Toss["Toss Payments"]
+        CoolSMS["CoolSMS"]
+        Gmail["Gmail SMTP"]
+    end
+
+    Filter -.-> Redis
+    Services --> Redis
+    Services --> PostgreSQL
+    Services --> S3
+    Services --- External_API
+    `,
     highlights: [
       'PostGIS 기반 가게 위치·사용자 현재 위치를 활용한 가게 필터링',
       '라이더 실시간 위치를 폴링으로 받아 Redis에서 관리',

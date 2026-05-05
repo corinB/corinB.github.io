@@ -19,6 +19,8 @@ const Agentation = import.meta.env.DEV
     )
   : null;
 
+import TerminalWidget from './components/TerminalWidget.jsx';
+
 export default function App() {
   const { theme, toggle } = useTheme();
   const { scrollYProgress } = useScroll();
@@ -52,6 +54,9 @@ export default function App() {
         <Contact profile={profile} />
       </main>
       <Footer brand={brand} />
+
+      <TerminalWidget theme={theme} onToggle={toggle} />
+
       {Agentation ? (
         <Suspense fallback={null}>
           <Agentation />

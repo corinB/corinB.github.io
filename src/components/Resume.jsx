@@ -44,7 +44,7 @@ export default function Resume() {
                 <h3 className="text-2xl font-bold text-[var(--text)] mb-2 font-sans">이력서 PDF</h3>
                 <p className="text-[var(--text-muted)] font-mono text-sm">> 최신 이력서를 다운로드 받으실 수 있습니다.</p>
               </div>
-              <a href="/resume.pdf" download style={{ color: 'var(--accent-fg)' }} className="flex items-center gap-2 px-6 py-3 bg-[var(--accent)] font-bold font-mono rounded hover:opacity-80 transition-opacity whitespace-nowrap">
+              <a href="/resume.pdf" download className="flex items-center gap-2 px-6 py-3 btn-accent font-bold font-mono rounded hover:opacity-80 transition-opacity whitespace-nowrap">
                 다운로드
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />

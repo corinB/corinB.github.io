@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
 @theme {
+  --color-accent: var(--accent);
+  --color-accent-fg: var(--accent-fg);
   --color-deepBlue-900: #0B1120;
   --color-deepBlue-800: #111827;
   --color-deepBlue-700: #1F2937;
@@ -392,6 +394,11 @@ section {
 .btn-ghost:hover {
   background: var(--surface-2);
   border-color: var(--border-strong);
+}
+
+.btn-accent {
+  background-color: var(--accent) !important;
+  color: var(--accent-fg) !important;
 }
 
 /* ============================================
@@ -928,5 +935,21 @@ section {
   font-size: 12.5px;
   color: var(--text-faint);
   text-align: center;
-  letter-spacing: 0.02em;
+   letter-spacing: 0.02em;
+}
+
+/* Terminal custom scrollbar */
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(75, 85, 99, 0.4);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(107, 114, 128, 0.8);
 }
