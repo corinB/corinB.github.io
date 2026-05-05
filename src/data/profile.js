@@ -4,11 +4,13 @@ export const profile = {
   title: 'Java · Spring 백엔드 신입',
   tagline:
     '설계로 소통하고, AI로 가속하며, 검증으로 완성하는 개발자.',
-  taglineShort: '설계 · AI · 검증',
+  taglineShort: '팀 리딩 · 설계 · AI · 검증',
+  heroBadges: ['Team Lead · PO 경험 다수'],
+  featuredTech: ['Java', 'Spring Boot', 'Claude Code'],
   heroStack: [
     {
       category: 'Backend',
-      items: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'Elasticsearch', 'PostgreSQL', 'MySQL', 'JPA · QueryDSL', 'MSA · Spring Cloud'],
+      items: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'Elasticsearch', 'JPA · QueryDSL', 'MSA · Spring Cloud'],
     },
     {
       category: 'Infra',
@@ -20,7 +22,9 @@ export const profile = {
     },
   ],
   introduction:
-    "협업의 핵심은 투명한 문서화에 있다고 믿는 백엔드 개발자입니다. 설계 문서를 기반으로 작업을 스프린트 단위로 나눠 AI에 위임하고, '신뢰하되 검증한다(Trust, but Verify)'는 원칙 아래 보고서와 통합테스트로 마무리하는 사이클을 프로젝트에 직접 적용해 왔습니다.",
+    '협업의 핵심은 투명한 문서화에 있다고 믿는 백엔드 개발자입니다.',
+  introductionDetail:
+    "설계 문서를 기반으로 작업을 스프린트 단위로 나눠 AI에 위임하고, '신뢰하되 검증한다(Trust, but Verify)'는 원칙 아래 보고서와 통합테스트로 마무리하는 사이클을 프로젝트에 직접 적용해 왔습니다.",
   email: 'gkdisrha2020@gmail.com',
   github: 'corinB',
   links: [
@@ -31,6 +35,14 @@ export const profile = {
   bootcamp:
     '멋쟁이사자처럼 자바 백엔드 19기 · 프로그래머스 백엔드 데브코스 단기심화 5기',
   extracurricular: '대구대학교 개발·창업 동아리 회장',
+  teamLead: '다수 팀 리딩 경험 (PO·팀장)',
+  awards: [
+    '대구대 IT/공학계열 작품 경진대회 — 최우수상 (2025)',
+    '영남대 글로벌 캡스톤 디자인 — 혁신상 (2024)',
+    '서울 공공데이터 활용 경진대회 — 최우수상 (2023)',
+    '호서대 소셜벤처 해커톤 — 우수상 (2023)',
+  ],
+  awardsArchive: 'https://github.com/corinB/Academic-Evidence-Portfolio',
   strengths: [
     'Redis로 동시성·재고 정합성 처리',
     'Kafka로 트랜잭션 경계 분리·확장성 확보',

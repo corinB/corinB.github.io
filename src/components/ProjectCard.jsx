@@ -21,8 +21,8 @@ export default function ProjectCard({ project, onOpen }) {
     <div
       className={`flex flex-col h-full bg-[var(--bg-elev)] rounded-xl border transition-all duration-300 cursor-pointer ${
         isHovered
-          ? 'border-[var(--accent)] shadow-[0_0_20px_var(--accent-ring)] -translate-y-1'
-          : 'border-[var(--border)] shadow-md'
+          ? 'border-[var(--accent)] shadow-[0_0_36px_var(--accent-ring)] -translate-y-2'
+          : 'border-[var(--border-strong)] shadow-md hover:shadow-lg'
       }`}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
@@ -75,14 +75,21 @@ export default function ProjectCard({ project, onOpen }) {
 
         {/* 스택 칩 */}
         <div className="flex flex-wrap gap-2">
-          {project.stack?.slice(0, 5).map((t) => (
-            <span
-              key={t}
-              className="px-2.5 py-1 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-[11px] text-[var(--text-muted)]"
-            >
-              {t}
-            </span>
-          ))}
+          {project.stack?.slice(0, 5).map((t) => {
+            const featured = project.featuredStack?.includes(t);
+            return (
+              <span
+                key={t}
+                className={
+                  featured
+                    ? 'px-2.5 py-1 bg-[var(--accent-soft)] border border-[var(--accent)] rounded font-mono text-[11px] text-[var(--accent)] font-semibold'
+                    : 'px-2.5 py-1 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-[11px] text-[var(--text-muted)]'
+                }
+              >
+                {t}
+              </span>
+            );
+          })}
           {project.stack?.length > 5 && (
             <span className="px-2.5 py-1 font-mono text-[11px] text-[var(--text-faint)]">
               +{project.stack.length - 5}

@@ -16,7 +16,7 @@ export default function Hero({ profile }) {
     : '#';
 
   return (
-    <section id="top" className="relative pt-40 pb-32 overflow-hidden min-h-screen flex items-center">
+    <section id="top" className="relative pt-40 pb-32 min-h-screen flex items-center">
       <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full bg-[var(--accent-ring)] blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-6 max-w-6xl relative z-10">
@@ -56,21 +56,45 @@ export default function Hero({ profile }) {
           <motion.div variants={fadeUp} className="flex flex-col gap-3">
             {profile.heroStack.map((group) => (
               <div key={group.category} className="flex items-start gap-3">
-                <span className="font-mono text-[10px] text-[var(--text-faint)] tracking-widest uppercase pt-1.5 w-[76px] shrink-0 text-right">
+                <span className="font-mono text-[10px] text-[var(--accent)] tracking-widest uppercase pt-1.5 w-[76px] shrink-0 text-right font-bold">
                   {group.category}
                 </span>
                 <div className="flex flex-wrap gap-1.5">
-                  {group.items.map((tech) => (
+                  {group.items.map((tech) => {
+                    const featured = profile.featuredTech?.includes(tech);
+                    return (
+                      <span
+                        key={tech}
+                        className={
+                          featured
+                            ? 'px-3 py-1.5 bg-[var(--accent-ring)] border border-[var(--accent)] rounded font-mono text-xs text-[var(--accent)] font-bold cursor-default'
+                            : 'px-3 py-1.5 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-xs text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-default'
+                        }
+                      >
+                        {tech}
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            ))}
+            {profile.heroBadges?.length ? (
+              <div className="flex items-start gap-3">
+                <span className="font-mono text-[10px] text-[var(--accent)] tracking-widest uppercase pt-1.5 w-[76px] shrink-0 text-right font-bold">
+                  Lead
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {profile.heroBadges.map((badge) => (
                     <span
-                      key={tech}
-                      className="px-3 py-1.5 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-xs text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-default"
+                      key={badge}
+                      className="px-3 py-1.5 bg-[var(--accent-ring)] border border-[var(--accent)] rounded font-mono text-xs text-[var(--accent)] cursor-default"
                     >
-                      {tech}
+                      {badge}
                     </span>
                   ))}
                 </div>
               </div>
-            ))}
+            ) : null}
           </motion.div>
 
           {/* CTA */}

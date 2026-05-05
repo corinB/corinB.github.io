@@ -8,6 +8,7 @@ export const projects = [
     demo: 'https://www.youtube.com/watch?v=krwVaERh1qE',
     lead: 'PO · 팀장',
     personaTags: ['설계', 'AI', '검증'],
+    featuredStack: ['Spring Cloud Gateway'],
     aiWorkflow: {
       summary:
         '문서 기반으로 스프린트별 작업과 보고서 생성을 AI에 지시. 보고서로 1차 검증 후 스프린트별 통합테스트로 최종 확인.',
@@ -83,12 +84,21 @@ flowchart LR
     ],
     role: '티켓 서비스·스트리밍 서비스 구현, 데일리 스크럼 진행과 팀 의견 조율, 일정 관리',
     troubleshooting: {
-      problem:
-        '`@Transactional` 메서드 안에서 Redis 캐시 갱신·외부 HTTP 호출(쿠키 차감/환불)·Kafka 발행을 함께 수행하다 보니, DB가 롤백되어도 부수 효과는 남아 정합성이 깨지는 케이스가 여러 곳에서 발견됐습니다. 환불에서는 쿠키 HTTP 환불이 성공한 뒤 티켓 삭제가 실패해 재환불이 가능했고, 티켓팅 시작에서는 Redis 5개 키를 시드한 뒤 schedule 저장이 실패해 대기열만 열려 있는 상태가 만들어졌습니다.',
-      solution:
-        'DB 외 부수 효과는 `@TransactionalEventListener(phase = AFTER_COMMIT)` 핸들러로 옮겨 DB 커밋이 확정된 뒤에만 실행되도록 분리했습니다. 트랜잭션 안에서 먼저 일어나야 하는 HTTP 차감은 `TransactionSynchronization.afterCompletion(STATUS_ROLLED_BACK)` 콜백에 보상 환불을 등록해 롤백 시 자동으로 되돌리도록 했고, 한 핸들러 안의 독립 부수 효과(쿠키 환불 / stock 복구 / `queue.drain` 발행)는 각각 try-catch로 격리해 하나의 실패가 나머지를 막지 않게 했습니다.',
-      result:
-        'Redis 성공·DB 실패, HTTP 성공·DB 실패, 환불 일부 실패 같은 갈라짐 시나리오에서 정합성이 유지됐고, 팀의 이슈 트래킹 기준 트랜잭션(TX) 7건 중 6건·메시징(KFK) 5건 전수가 RESOLVED로 처리됐습니다. 큐 드레인은 `@Async` 풀 고갈을 계기로 Kafka 컨슈머(`QueueDrainConsumer` concurrency=4)로 전환해 백프레셔가 안정화됐습니다.',
+      problem: [
+        '`@Transactional` 메서드 안에서 Redis 갱신·외부 HTTP 호출·Kafka 발행을 함께 수행 → DB 롤백 후에도 부수 효과가 잔존해 정합성이 깨짐.',
+        '환불: 쿠키 HTTP 환불 성공 → 티켓 삭제 실패 → 재환불 가능 상태가 됨.',
+        '티켓팅 시작: Redis 5개 키 시드 → schedule 저장 실패 → 대기열만 열린 상태로 남음.',
+      ],
+      solution: [
+        'DB 외 부수 효과를 `@TransactionalEventListener(AFTER_COMMIT)` 핸들러로 분리 — 커밋 확정 후에만 실행.',
+        '트랜잭션 안에서 먼저 일어나는 HTTP 차감은 `TransactionSynchronization.afterCompletion(STATUS_ROLLED_BACK)` 콜백에 보상 환불 등록.',
+        '핸들러 내 독립 부수 효과(쿠키 환불 / stock 복구 / queue.drain 발행)는 각각 try-catch로 격리해 하나의 실패가 나머지를 막지 않게 함.',
+      ],
+      result: [
+        'Redis·DB·HTTP가 갈라지는 시나리오 전반에서 정합성 유지.',
+        '팀 이슈 트래킹 기준 TX 7건 중 6건·KFK 5건 전수 RESOLVED.',
+        '큐 드레인은 `@Async` 풀 고갈을 계기로 Kafka 컨슈머(`QueueDrainConsumer` concurrency=4)로 전환 → 백프레셔 안정화.',
+      ],
     },
   },
   {
@@ -100,6 +110,7 @@ flowchart LR
     demo: 'https://www.youtube.com/watch?v=hY1qML2QABM',
     lead: 'PO · 팀장',
     personaTags: ['설계', 'AI', '검증'],
+    featuredStack: ['PostgreSQL 16 + PostGIS'],
     aiWorkflow: {
       summary:
         '문서 기반으로 작업을 스프린트 단위로 나누어 AI에 위임하고, 산출물을 직접 테스트로 검증.',
@@ -167,12 +178,107 @@ graph TD
     ],
     role: 'PO로서 데일리 스크럼 주관과 팀원 간 의견 중재, 라이더 모듈·위치 기반 상점 검색 및 추천 기능 구현',
     troubleshooting: {
-      problem:
-        '실시간 라이더 좌표를 3~5초 주기로 PostgreSQL에 갱신하면서 디스크 I/O가 폭증했고, ACID 보장을 위한 Row-level Lock 경합으로 피크 타임 API 응답이 지연됐습니다. 영속성이 필요 없는 휘발성 좌표가 DB 커넥션을 점유해 결제·주문 처리에까지 영향이 번졌습니다.',
-      solution:
-        '실시간 좌표는 영속성보다 최신성이 중요한 휘발성 데이터로 보고 쓰기 부하를 Redis로 이관했습니다. 공간 탐색은 Redis GEO search로 메모리 내 O(log N) 처리해 픽업지 10km 이내 라이더를 추리고 SSE로 푸시했고, 동일 배달건 다중 수락은 Redis 분산 락(setIfAbsent TTL 5초)으로 원자성을 보장했습니다. 라이더별 동시 배달 3건 제한은 Redis SET·SCARD로 O(1) 카운팅했고, 운행 종료 시 좌표를 즉시 삭제하고 maxmemory `allkeys-lru` 정책으로 메모리를 안전하게 관리했습니다.',
-      result:
-        '위치 업데이트 쿼리를 RDBMS에서 Redis로 옮겨 DB 쓰기 부하의 약 90%를 덜어냈고(전체 쿼리 중 위치 업데이트 비중 기준), 메모리 기반 연산으로 라이더 주변 목록 렌더링 응답 속도가 향상됐습니다. 분산 락과 Atomic Counter로 중복 배차·동시 배달 제한 위반을 차단했습니다.',
+      problem: [
+        '실시간 라이더 좌표를 3~5초 주기로 PostgreSQL에 갱신 → 디스크 I/O 폭증.',
+        'Row-level Lock 경합으로 피크 타임 API 응답 지연.',
+        '영속성이 필요 없는 휘발성 좌표가 DB 커넥션을 점유 → 결제·주문 처리에까지 영향 확산.',
+      ],
+      solution: [
+        '실시간 좌표를 Redis로 이관 (영속성보다 최신성이 중요한 휘발성 데이터로 분류).',
+        'Redis GEO search로 픽업지 10km 이내 라이더를 메모리 내 O(log N) 추출 후 SSE 푸시.',
+        '동일 배달건 다중 수락은 Redis 분산 락(`setIfAbsent`, TTL 5초)으로 원자성 보장.',
+        '라이더별 동시 배달 3건 제한은 Redis SET·SCARD O(1) 카운팅. 운행 종료 시 즉시 삭제 + maxmemory `allkeys-lru`.',
+      ],
+      result: [
+        '위치 업데이트 쿼리를 RDBMS → Redis로 옮겨 DB 쓰기 부하 약 90% 절감 (위치 업데이트 비중 기준).',
+        '메모리 기반 연산으로 라이더 주변 목록 렌더링 응답 속도 향상.',
+        '분산 락 + Atomic Counter로 중복 배차·동시 배달 제한 위반 차단.',
+      ],
+    },
+  },
+  {
+    id: 'cinema',
+    name: 'Cinema',
+    summary:
+      '서버 기준 시간으로 동시에 시청·채팅하는 그룹 상영 + 자동 정산 플랫폼 → 이후 CineStream으로 구조 확장 (lion-team4 단기 협업)',
+    period: '2026.01.12 ~ 2026.01.21',
+    repo: 'https://github.com/corinB/cinema',
+    demo: 'https://www.youtube.com/watch?v=GngLq_F9FmI',
+    lead: '팀원 · PG·구독·리뷰·검색 담당',
+    personaTags: ['설계', '검증'],
+    featuredStack: ['QueryDSL'],
+    stack: [
+      'Java 21',
+      'Spring Boot 3.5',
+      'QueryDSL',
+      'MySQL 8',
+      'Next.js 16',
+      'STOMP / WebSocket',
+      'FFmpeg HLS',
+      'Spring Batch',
+      'Docker',
+    ],
+    highlights: [
+      '토스 PG 연동 + 구독 시스템 결제·갱신 흐름 구현',
+      '리뷰 관리 도메인 구현',
+      'QueryDSL 기반 콘텐츠/스케줄 동적 검색·페이지네이션 (Page → Slice 최적화)',
+    ],
+    role: '토스 PG 연동, 구독 시스템, 리뷰 관리, 콘텐츠/스케줄 검색(QueryDSL 동적 검색·페이지네이션) 4개 도메인 구현 담당',
+    troubleshooting: {
+      problem: [
+        'Spring Data `Page<T>`로 페이지네이션 반환 시 데이터 조회 외에 count 쿼리가 매 호출마다 추가 발생.',
+        '검색·무한 스크롤 화면처럼 전체 페이지 수가 필요 없는 곳에서도 불필요한 연산 한 번이 매번 들어감.',
+      ],
+      solution: [
+        '`Page` 대신 `Slice<T>` 사용 — `pageSize + 1`만 조회해 `hasNext`만 판단, count 쿼리 발생 없음.',
+        '다음 페이지 존재 여부만 알면 충분한 검색 화면 요구사항과 자연스럽게 부합.',
+      ],
+      result: [
+        '응답 1건당 count 쿼리 1회 제거 → 단일 쿼리로 단순화.',
+        '검색 트래픽이 늘수록 절약 효과가 누적되는 구조.',
+      ],
+    },
+  },
+  {
+    id: 'opene',
+    name: 'Opene',
+    summary:
+      'Spring Boot 백엔드와 Python/Flask·YOLOv5 추론을 잇는 이종 스택 통합 웹앱. 도메인 요구를 풀기 위해 ML 도구 스택까지 직접 다룬 첫 백엔드 협업 프로젝트.',
+    period: '2024',
+    repo: 'https://github.com/corinB/Opene',
+    demo: 'https://www.youtube.com/watch?v=DxCflyinK2I',
+    lead: 'PO · 팀장',
+    personaTags: ['팀 리딩', '검증'],
+    featuredStack: ['Flask 2.x (Python 3.9)'],
+    stack: [
+      'Spring Boot 3.1',
+      'Java 17',
+      'Thymeleaf',
+      'Flask 2.x (Python 3.9)',
+      'PyTorch 2.3 / YOLOv5',
+      'KMeans (scikit-learn)',
+    ],
+    highlights: [
+      '문제 해결을 위해 도구를 가리지 않음 — Java 메인 스택 위에 Python/ML 런타임 직접 도입',
+      'Spring Boot(:8080) ↔ Flask(:5000) 이종 런타임 연동: 이미지 업로드 → 추론 호출 → 추천 응답 파이프라인 구성',
+      'YOLOv5 객체 탐지 + KMeans RGB 클러스터링으로 코디 컬러 매칭 로직 구현',
+      'PO로서 5개 스타일 카테고리·약 2,914장 데이터셋 스코프 정의, 팀 일정 조율',
+    ],
+    role:
+      'PO·팀장으로 협업 일정·스코프 조율. 백엔드 본 영역(Spring Boot)에 Python/Flask·YOLOv5 추론 서빙을 직접 결합해 도메인 요구(이미지 기반 컬러 추천)를 풀어냄. ML 라이브러리·다중 런타임 운영 경험을 메인 스택 외 영역으로 확장한 사례.',
+    troubleshooting: {
+      problem: [
+        '사진별 상의·하의 색상 정보를 어떤 방식으로 저장·검색할지 막막.',
+        '당시(2024) 벡터 DB·임베딩 유사도 검색이라는 개념을 인지하지 못한 상태.',
+      ],
+      solution: [
+        'RDB 테이블에 사진별 상의·하의 RGB 값을 직접 컬럼으로 저장.',
+        '추천 요청 시 입력 이미지 RGB와 테이블 값을 비교해 유사도 계산.',
+      ],
+      result: [
+        '단순 컬럼 비교로 컬러 매칭 추천 기능은 정상 동작.',
+        '회고: 이후 벡터 DB·임베딩 패턴을 학습하며 같은 문제를 더 적합한 자료구조로 풀 수 있다는 것을 확인.',
+      ],
     },
   },
 ];

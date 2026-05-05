@@ -9,8 +9,9 @@ export default function Projects({ projects }) {
 
   return (
     <section id="projects" className="py-32 relative z-10">
-      <div className="container mx-auto px-6 max-w-6xl">
-        <div className="mb-24">
+      <div className="absolute bottom-[8%] right-[-12%] w-[800px] h-[800px] rounded-full bg-[var(--accent-ring)] blur-[150px] pointer-events-none" />
+      <div className="container mx-auto px-6 max-w-6xl relative">
+        <div className="mb-14">
           <p className="text-[var(--accent)] font-mono text-sm tracking-widest uppercase mb-4 flex items-center gap-2">
             <span className="w-8 h-px bg-[var(--accent)] opacity-60"></span>
             Projects

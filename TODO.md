@@ -46,7 +46,7 @@
 - [x] 두 개의 parallax `useScroll`/`useTransform` 제거
 - [x] 배경 blur orb 단순화 (1개만)
 - [x] 데스크톱 1440·1920에서 5초 룩 검증 (다크/라이트 둘 다)
-- [ ] **사용자 작업**: `public/resume.pdf` 파일 배치
+- [x] **사용자 작업**: `public/resume.pdf` 파일 배치 (사용자 직접 생성·배치 완료)
 
 ## PR-4 — About 압축 ✅ PR-2에서 선처리 완료
 
@@ -114,6 +114,35 @@
 - [x] `ProjectDetail.jsx`: 탭 라벨 한국어화 (문제/해결/결과), footer 버튼 레이블
 - [x] `npm run build` 통과
 - [ ] 슬라이드 즉시 표시 + 다크/라이트 확인
+
+---
+
+## PR-10 — Cinema·Opene 카드 추가 + 팀 리딩 강조
+
+> 배경: reference/p3(Cinema)·p4(Opene)이 portfolio 카드에 미등재. 사용자 PO·팀장 다수 경험도 어디에도 안 드러남. plan: `C:/Users/qorwh/.claude/plans/curious-cuddling-cake.md`.
+
+- [x] `projects.js`: cinema 객체 추가 (lead='팀원·콘텐츠·시청기록 담당', personaTags=['설계','검증'], aiWorkflow/architectureDiagram 의도적 생략)
+- [x] `projects.js`: opene 객체 추가 (lead='PO·팀장', personaTags=['팀 리딩','검증'], summary에 이종 스택 강조, highlights에 "도구를 가리지 않음" 메시지)
+- [x] `projects.js`: cinema repo `https://github.com/corinB/cinema`, opene repo `https://github.com/corinB/Opene`
+- [x] `profile.js`: taglineShort '설계 · AI · 검증' → '팀 리딩 · 설계 · AI · 검증'
+- [x] `profile.js`: heroBadges=['Team Lead · PO 경험 다수'] 신설
+- [x] `profile.js`: teamLead='다수 팀 리딩 경험 (PO·팀장)' 신설
+- [x] `Hero.jsx`: heroStack 마지막 그룹 아래 Lead 칩 행 (heroBadges 조건부)
+- [x] `About.jsx`: 활동 행 아래 '팀 리딩' 행 (teamLead 조건부)
+- [x] `CLAUDE.md`: reference/ 표 매핑 단언으로 갱신
+- [x] `public/resume.html`: Cinema·Opene 카드 추가 + job-title 아래 "팀 리딩 경험 다수" 보조 라인
+- [x] `public/resume.html`: Cinema·Opene `.ts` 트러블슈팅 블록 추가 (Page→Slice / 벡터DB 회고)
+- [x] `npm run build` 통과 (12.54s, exit 0)
+- [x] Cinema lead/highlights 정정: 본인 담당 4개 도메인(토스 PG·구독·리뷰·콘텐츠/스케줄 검색)으로 교체, 팀 공통 기반 항목 제거 (Agentation 피드백 반영)
+- [x] Cinema troubleshooting PSR (Page → Slice 최적화) — projects.js + resume.html 양쪽 반영
+- [x] Opene troubleshooting PSR (벡터 DB 회고 + RGB 컬럼 저장) — projects.js + resume.html 양쪽 반영
+- [x] `ProjectDetail.jsx` TroubleshootingSlide: string|array 둘 다 지원, array는 `<ul>` 불릿으로 렌더링 (가독성 개선)
+- [x] `projects.js`: 4개 프로젝트 troubleshooting을 모두 짧은 불릿 배열로 재구성
+- [x] `resume.html`: 4개 프로젝트 트러블슈팅을 portfolio와 동일한 불릿 구조로 재구성 (`.ts-section` + `ul.ts-list` CSS 신설)
+- [x] `profile.js`+`Hero.jsx`: `featuredTech` 필드로 Java·Spring Boot·Claude Code를 PO 배지와 동일 accent 스타일로 강조
+- [x] `profile.js`+`About.jsx`: '주요 수상' 행 신설 (4건 + Academic Evidence Portfolio 전체 보기 링크)
+- [x] `resume.html`: 대외활동 섹션 끝에 증빙 GitHub 링크 한 줄 추가
+- [ ] 다크/라이트, 모달 4개 troubleshooting 탭 가독성 시각 검증 (수동)
 
 ---
 

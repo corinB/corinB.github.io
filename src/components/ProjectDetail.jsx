@@ -152,9 +152,20 @@ const TroubleshootingSlide = ({ project }) => {
             transition={{ duration: 0.15 }}
             className={`pl-4 border-l-2 py-2 ${contentColor}`}
           >
-            <p className="text-[var(--text)] leading-loose text-[14.5px]">
-              {getContent()}
-            </p>
+            {Array.isArray(getContent()) ? (
+              <ul className="space-y-3">
+                {getContent().map((item, i) => (
+                  <li key={i} className="flex gap-3 text-[var(--text)] leading-relaxed text-[14.5px]">
+                    <span className="text-[var(--accent)] shrink-0 mt-1 font-mono">▸</span>
+                    <span className="flex-1">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : (
+              <p className="text-[var(--text)] leading-loose text-[14.5px]">
+                {getContent()}
+              </p>
+            )}
           </motion.div>
         </AnimatePresence>
       </div>

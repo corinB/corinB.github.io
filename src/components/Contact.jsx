@@ -58,7 +58,7 @@ export default function Contact({ profile }) {
   return (
     <section id="contact" className="relative z-10 py-32">
       <div className="container mx-auto px-6 max-w-6xl">
-        <div className="mb-24">
+        <div className="mb-14">
           <p className="text-[var(--accent)] font-mono text-sm tracking-widest uppercase mb-4 flex items-center gap-2">
             <span className="w-8 h-px bg-[var(--accent)] opacity-60"></span>
             Contact
@@ -77,7 +77,7 @@ export default function Contact({ profile }) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="flex flex-col h-full bg-[var(--bg-elev)] border border-[var(--border)] rounded-xl p-8 shadow-[var(--shadow-lg)] hover:border-[var(--accent)] group transition-colors"
+              className="flex flex-col h-full bg-[var(--bg-elev)] border border-[var(--border-strong)] rounded-xl p-8 shadow-[var(--shadow-lg)] hover:border-[var(--accent)] group transition-colors"
             >
               <div className="w-12 h-12 bg-[var(--surface)] border border-[var(--border)] rounded-full flex items-center justify-center text-[var(--accent)] mb-6 group-hover:bg-[var(--accent)] group-hover:text-[var(--bg)] transition-colors">
                 {item.icon}

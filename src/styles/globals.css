@@ -43,9 +43,9 @@ body {
   inset: -50%;
   width: 200%;
   height: 200%;
-  background-image: 
-    radial-gradient(circle at 25% 50%, rgba(0, 240, 255, 0.04), transparent 35%),
-    radial-gradient(circle at 75% 30%, rgba(255, 0, 127, 0.04), transparent 35%);
+  background-image:
+    radial-gradient(circle at 25% 50%, var(--accent-ring), transparent 35%),
+    radial-gradient(circle at 75% 30%, var(--accent-soft), transparent 35%);
   z-index: 0;
   pointer-events: none;
 }
