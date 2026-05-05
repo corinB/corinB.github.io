@@ -76,11 +76,15 @@ export default function AboutDetail({ item, onClose }) {
         {/* Modal Header */}
         <div className="flex items-center px-4 py-3 bg-[var(--surface-2)] border-b border-[var(--border)] shrink-0">
           <div className="flex gap-2">
-            <button onClick={onClose} className="w-3.5 h-3.5 rounded-full bg-[#ff5f56] flex items-center justify-center group">
-              <svg className="w-2 h-2 opacity-0 group-hover:opacity-100" style={{ color: '#4d0000' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+            <button 
+              onClick={onClose} 
+              className="w-3.5 h-3.5 rounded-full flex items-center justify-center group shadow-inner"
+              style={{ backgroundColor: '#ff5f56' }}
+            >
+              <svg className="w-2 h-2 opacity-0 group-hover:opacity-100 text-[#4d0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
-            <div className="w-3.5 h-3.5 rounded-full bg-[#ffbd2e]" />
-            <div className="w-3.5 h-3.5 rounded-full bg-[#27c93f]" />
+            <div className="w-3.5 h-3.5 rounded-full shadow-inner" style={{ backgroundColor: '#ffbd2e' }} />
+            <div className="w-3.5 h-3.5 rounded-full shadow-inner" style={{ backgroundColor: '#27c93f' }} />
           </div>
           <div className="mx-auto text-[11px] font-mono font-bold tracking-widest text-[var(--text-faint)] uppercase">
             inspect_profile_{item.id}.sh

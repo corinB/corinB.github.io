@@ -255,13 +255,13 @@ export default function ProjectDetail({ project, onClose }) {
           <div className="flex gap-2 relative z-50">
             <button 
               onClick={onClose} 
-              className="w-3.5 h-3.5 rounded-full transition-colors flex items-center justify-center group cursor-pointer shadow-sm hover:brightness-90"
+              className="w-3.5 h-3.5 rounded-full flex items-center justify-center group cursor-pointer shadow-inner hover:brightness-90 transition-all"
               style={{ backgroundColor: '#ff5f56' }}
             >
-               <svg className="w-2 h-2 opacity-0 group-hover:opacity-100" style={{ color: '#4d0000' }} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
+               <svg className="w-2 h-2 opacity-0 group-hover:opacity-100 text-[#4d0000]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3.5"><path d="M18 6L6 18M6 6l12 12"/></svg>
             </button>
-            <div className="w-3.5 h-3.5 rounded-full shadow-sm" style={{ backgroundColor: '#ffbd2e' }} />
-            <div className="w-3.5 h-3.5 rounded-full shadow-sm" style={{ backgroundColor: '#27c93f' }} />
+            <div className="w-3.5 h-3.5 rounded-full shadow-inner" style={{ backgroundColor: '#ffbd2e' }} />
+            <div className="w-3.5 h-3.5 rounded-full shadow-inner" style={{ backgroundColor: '#27c93f' }} />
           </div>
           <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
              <span className="text-[11px] text-[var(--text-faint)] font-mono font-bold tracking-widest">{project.id}.sh - 120x40</span>
