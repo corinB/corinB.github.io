@@ -1,137 +1,98 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
-const bootUpVariants = {
-  hidden: { opacity: 0, rotateX: -45, y: 60, scale: 0.9 },
-  visible: {
-    opacity: 1, rotateX: 0, y: 0, scale: 1,
-    transition: { duration: 1, type: 'spring', bounce: 0.4 }
-  },
+const fadeUp = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5 } },
 };
 
-const HighlightText = ({ text }) => {
-  const words = text.split(" ");
-  
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.04, delayChildren: 0.6 },
-    },
-  };
-
-  const child = {
-    hidden: {
-      opacity: 0,
-      y: 10,
-      color: "var(--accent)",
-      filter: "blur(4px)",
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      color: "var(--text)",
-      filter: "blur(0px)",
-      transition: {
-        type: "spring",
-        damping: 12,
-        stiffness: 100,
-      },
-    },
-  };
-
-  return (
-    <motion.div 
-      className="text-xl md:text-2xl max-w-3xl leading-relaxed mb-12 font-sans"
-      variants={container}
-      initial="hidden"
-      animate="visible"
-    >
-      {words.map((word, i) => (
-        <motion.span
-          variants={child}
-          key={i}
-          style={{ display: 'inline-block', marginRight: '0.25em' }}
-        >
-          {word}
-        </motion.span>
-      ))}
-    </motion.div>
-  );
+const stagger = {
+  hidden: {},
+  visible: { transition: { staggerChildren: 0.1, delayChildren: 0.1 } },
 };
 
 export default function Hero({ profile }) {
-  const containerRef = useRef(null);
-  
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
-
-  const yText = useTransform(scrollYProgress, [0, 1], [0, 50]);
-  const yActions = useTransform(scrollYProgress, [0, 1], [0, 100]);
-
   const githubUrl = profile.github && !profile.github.includes('[')
     ? `https://github.com/${profile.github}`
     : '#';
 
   return (
-    <section id="top" ref={containerRef} className="relative pt-40 pb-32 overflow-hidden min-h-screen flex items-center">
-      {/* Background decoration */}
-      <div className="absolute top-[-20%] right-[-10%] w-[800px] h-[800px] rounded-full bg-[var(--accent-ring)] blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[600px] h-[600px] rounded-full bg-[var(--accent-soft)] blur-[100px] pointer-events-none" />
+    <section id="top" className="relative pt-40 pb-32 overflow-hidden min-h-screen flex items-center">
+      <div className="absolute top-[-20%] right-[-10%] w-[700px] h-[700px] rounded-full bg-[var(--accent-ring)] blur-[120px] pointer-events-none" />
 
-      <div className="container mx-auto px-6 max-w-6xl relative z-10" style={{ perspective: 1200 }}>
-        <motion.div 
-          style={{ y: yText }}
-          className="mb-8"
+      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+        <motion.div
+          variants={stagger}
+          initial="hidden"
+          animate="visible"
+          className="flex flex-col gap-6"
         >
-          <motion.div
-            variants={bootUpVariants}
-            initial="hidden"
-            animate="visible"
-            style={{ transformOrigin: "bottom left" }}
-          >
-            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--surface)] border border-[var(--border)] rounded-full font-mono text-xs text-[var(--accent)] mb-8">
+          {/* 구직 중 배지 */}
+          <motion.div variants={fadeUp}>
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-[var(--surface)] border border-[var(--border)] rounded-full font-mono text-xs text-[var(--accent)]">
               <span className="w-2 h-2 rounded-full bg-[var(--accent)] animate-pulse shadow-[0_0_8px_var(--accent-ring)]" />
               {profile.title} · 구직 중
             </span>
-            <h1 className="text-5xl md:text-8xl font-extrabold tracking-tight mb-8 text-[var(--text)] leading-tight">
-              {profile.name}
-            </h1>
           </motion.div>
-        </motion.div>
 
-        <motion.div
-          style={{ y: yActions }}
-        >
-          <motion.div
-            variants={bootUpVariants}
-            initial="hidden"
-            animate="visible"
-            transition={{ delay: 0.2 }}
-            style={{ transformOrigin: "bottom left" }}
+          {/* 이름 */}
+          <motion.h1
+            variants={fadeUp}
+            className="text-5xl md:text-8xl font-extrabold tracking-tight text-[var(--text)] leading-tight"
           >
-            <HighlightText text={profile.tagline} />
-            <div className="flex flex-wrap gap-4">
-              <a href="#projects" className="flex items-center gap-2 px-6 py-3 btn-accent font-bold font-mono rounded hover:opacity-80 transition-opacity hover:-translate-y-1 hover:shadow-[0_0_15px_var(--accent-ring)]">
-                프로젝트 보기
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M5 12h14M13 5l7 7-7 7" />
-                </svg>
-              </a>
-              <a href={`mailto:${profile.email}`} className="px-6 py-3 bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] font-mono rounded hover:bg-[var(--surface-2)] transition-all hover:-translate-y-1">
-                이메일 보내기
-              </a>
-              <a
-                href={githubUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-6 py-3 bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] font-mono rounded hover:bg-[var(--surface-2)] transition-all hover:-translate-y-1"
-              >
-                GitHub
-              </a>
-            </div>
+            {profile.name}
+          </motion.h1>
+
+          {/* 직군 + 페르소나 부제 */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-1.5">
+            <p className="text-xl md:text-2xl font-semibold text-[var(--text-muted)]">
+              {profile.title}
+            </p>
+            <p className="font-mono text-sm text-[var(--accent)] tracking-widest uppercase">
+              {profile.taglineShort}
+            </p>
+          </motion.div>
+
+          {/* 스택 칩 */}
+          <motion.div variants={fadeUp} className="flex flex-col gap-3">
+            {profile.heroStack.map((group) => (
+              <div key={group.category} className="flex items-start gap-3">
+                <span className="font-mono text-[10px] text-[var(--text-faint)] tracking-widest uppercase pt-1.5 w-[76px] shrink-0 text-right">
+                  {group.category}
+                </span>
+                <div className="flex flex-wrap gap-1.5">
+                  {group.items.map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-3 py-1.5 bg-[var(--surface)] border border-[var(--border)] rounded font-mono text-xs text-[var(--text-muted)] hover:text-[var(--text)] hover:border-[var(--accent)] transition-colors cursor-default"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div variants={fadeUp} className="flex flex-wrap gap-4 pt-2">
+            <a
+              href="/resume.pdf"
+              download
+              className="flex items-center gap-2 px-6 py-3 btn-accent font-bold rounded hover:opacity-80 transition-all hover:-translate-y-0.5"
+            >
+              이력서 PDF
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3" />
+              </svg>
+            </a>
+            <a
+              href={githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-6 py-3 bg-[var(--surface)] border border-[var(--border)] text-[var(--text)] rounded hover:bg-[var(--surface-2)] transition-all hover:-translate-y-0.5"
+            >
+              GitHub
+            </a>
           </motion.div>
         </motion.div>
       </div>

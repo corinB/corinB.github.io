@@ -1,11 +1,26 @@
 export const profile = {
   name: '백종현',
   nameEn: 'Baek Jong-hyun',
-  title: '신입 백엔드 개발자',
+  title: 'Java · Spring 백엔드 신입',
   tagline:
     '설계로 소통하고, AI로 가속하며, 검증으로 완성하는 개발자.',
+  taglineShort: '설계 · AI · 검증',
+  heroStack: [
+    {
+      category: 'Backend',
+      items: ['Java', 'Spring Boot', 'Kafka', 'Redis', 'Elasticsearch', 'PostgreSQL', 'MySQL', 'JPA · QueryDSL', 'MSA · Spring Cloud'],
+    },
+    {
+      category: 'Infra',
+      items: ['AWS', 'Docker', 'Kubernetes', 'GitHub Actions'],
+    },
+    {
+      category: 'AI Tools',
+      items: ['Claude Code', 'Cursor', 'Antigravity'],
+    },
+  ],
   introduction:
-    "저는 협업의 핵심이 '투명한 문서화'에 있다고 믿는 백엔드 개발자입니다. 여러 팀 프로젝트에서 리더 역할을 수행하며, 설계 단계의 철저한 문서화가 추후 수정 비용을 획기적으로 줄이는 것을 경험했습니다.\n\n최근에는 AI 코딩 도구를 개발 프로세스에 적극 도입해 생산성을 높이고 있습니다. 다만 AI의 결과물을 맹목적으로 수용하지는 않습니다. '신뢰하되 검증한다(Trust, but Verify)'는 원칙 아래, AI가 시스템 아키텍처와 성능 요구사항에 부합하게 작업했는지 직접 검토하고 테스트해 검증하는걸 선호합니다.",
+    "협업의 핵심은 투명한 문서화에 있다고 믿는 백엔드 개발자입니다. 설계 문서를 기반으로 작업을 스프린트 단위로 나눠 AI에 위임하고, '신뢰하되 검증한다(Trust, but Verify)'는 원칙 아래 보고서와 통합테스트로 마무리하는 사이클을 프로젝트에 직접 적용해 왔습니다.",
   email: 'gkdisrha2020@gmail.com',
   github: 'corinB',
   links: [

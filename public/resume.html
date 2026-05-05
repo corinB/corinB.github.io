@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<title>백종현 이력서</title>
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  @page { size: A4; margin: 18mm 20mm; }
+
+  body {
+    font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
+    font-size: 10pt;
+    color: #1e1e1e;
+    background: #fff;
+    line-height: 1.65;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    width: 100%;
+  }
+
+  table { border-collapse: collapse; }
+
+  .fill {
+    background: #fef9c3;
+    color: #854d0e;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-size: 9pt;
+  }
+
+  /* 섹션 제목 */
+  .sec-title {
+    font-size: 8.5pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b7280;
+    border-bottom: 1px solid #d1d5db;
+    padding-bottom: 3px;
+    margin-bottom: 8px;
+    margin-top: 14px;
+  }
+
+  .name { font-size: 28pt; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
+  .job-title { font-size: 11pt; font-weight: 600; color: #374151; margin-top: 4px; }
+  .contact { font-size: 9.5pt; color: #4b5563; margin-top: 6px; line-height: 1.8; }
+  .contact a { color: #1d4ed8; text-decoration: none; }
+
+  /* 항목 행 (기관명 + 날짜) */
+  .item-name { font-size: 10.5pt; font-weight: 700; color: #111827; }
+  .item-role { font-size: 9.5pt; font-weight: 400; color: #374151; margin-left: 4px; }
+  .item-sub { font-size: 9pt; color: #6b7280; margin-top: 1px; }
+  .item-date { font-size: 9pt; color: #6b7280; text-align: right; white-space: nowrap; }
+
+  /* 스택 */
+  .stack-cat { font-size: 8.5pt; font-weight: 700; color: #374151; white-space: nowrap; }
+  .stack-val { font-size: 9.5pt; color: #374151; padding-left: 8px; }
+
+  /* 프로젝트 */
+  .proj-name { font-size: 12pt; font-weight: 800; color: #111827; }
+  .proj-meta { font-size: 9pt; color: #6b7280; text-align: right; white-space: nowrap; }
+  .proj-meta a { color: #1d4ed8; text-decoration: none; }
+  .proj-desc { font-size: 9.5pt; color: #4b5563; margin-top: 2px; }
+  .proj-role { font-size: 9.5pt; margin-top: 3px; margin-bottom: 4px; }
+  .proj-role strong { font-weight: 700; }
+
+  ul.bullets { padding-left: 16px; margin: 3px 0 6px; }
+  ul.bullets li { font-size: 9.5pt; color: #1e1e1e; margin-bottom: 2px; }
+
+  .ts {
+    background: #f9fafb;
+    border-left: 3px solid #9ca3af;
+    padding: 5px 9px;
+    margin-bottom: 5px;
+  }
+  .ts-head { font-size: 8pt; font-weight: 700; color: #6b7280; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
+  .ts-body { font-size: 8.5pt; color: #374151; line-height: 1.6; }
+  .ts-body strong { font-weight: 700; color: #1e1e1e; }
+
+  .tags { margin-top: 4px; }
+  .tag {
+    display: inline-block;
+    font-size: 7.5pt;
+    background: #f3f4f6;
+    border: 1px solid #d1d5db;
+    border-radius: 3px;
+    padding: 0 5px;
+    margin: 1px 2px 1px 0;
+    color: #4b5563;
+    font-family: 'Consolas', 'D2Coding', monospace;
+  }
+
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 10px 0; }
+
+  @media print {
+    .fill { background: #fef9c3 !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══ 헤더: 이름(좌) + 사진(우) ══ -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0"
+       style="border-bottom: 2.5px solid #1e1e1e; padding-bottom: 14px; margin-bottom: 4px;">
+  <tr>
+    <td valign="top">
+      <div class="name">백종현</div>
+      <div class="job-title">Java · Spring 백엔드 신입</div>
+      <div class="contact">
+        생년월일 <span class="fill">YYYY.MM.DD</span> &nbsp;·&nbsp; 거주지 <span class="fill">시 / 구</span><br/>
+        <a href="mailto:gkdisrha2020@gmail.com">gkdisrha2020@gmail.com</a> &nbsp;·&nbsp;
+        <a href="https://github.com/corinB" target="_blank">github.com/corinB</a>
+      </div>
+    </td>
+    <td width="116" valign="top" align="center" style="padding-left: 16px;">
+      <table width="108" height="138" border="1" cellpadding="0" cellspacing="0"
+             style="border: 1.5px dashed #9ca3af;">
+        <tr>
+          <td align="center" valign="middle"
+              style="color: #9ca3af; font-size: 8pt; line-height: 1.7; font-family: 'Malgun Gothic', sans-serif;">
+            사진<br/>삽입<br/>위치
+          </td>
+        </tr>
+      </table>
+    </td>
+  </tr>
+</table>
+
+
+<!-- ══ 학력 ══ -->
+<div class="sec-title">학력</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top">
+      <div class="item-name">대구대학교</div>
+      <div class="item-sub">컴퓨터공학 · 전자정보융합전공 &nbsp;|&nbsp; 졸업 &nbsp;|&nbsp; 학점 <span class="fill">X.XX / 4.X</span></div>
+    </td>
+    <td width="130" valign="top" class="item-date">
+      <span class="fill">YYYY.03</span> ~ <span class="fill">YYYY.02</span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- ══ 병역 ══ -->
+<div class="sec-title">병역</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td valign="top" style="font-size:9.5pt;">
+      군필 &nbsp;·&nbsp; <span class="fill">YYYY.MM ~ YYYY.MM</span> &nbsp;·&nbsp; <span class="fill">육군 병장 만기전역</span>
+    </td>
+  </tr>
+</table>
+
+
+<!-- ══ 교육 ══ -->
+<div class="sec-title">교육</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="4">
+  <tr>
+    <td valign="top" class="item-name">프로그래머스 백엔드 데브코스 단기심화 5기</td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+  <tr><td height="4" colspan="2"></td></tr>
+  <tr>
+    <td valign="top" class="item-name">멋쟁이사자처럼 자바 백엔드 19기</td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+</table>
+
+
+<!-- ══ 대외활동 ══ -->
+<div class="sec-title">대외활동</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="4">
+
+  <tr>
+    <td valign="top">
+      <span class="item-name">대구대학교 개발·창업 동아리</span><span class="item-role">· 회장</span>
+      <div class="item-sub"><span class="fill">주요 활동 내용 (선택)</span></div>
+    </td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+  <tr><td height="5" colspan="2"></td></tr>
+
+  <tr>
+    <td valign="top">
+      <span class="item-name"><span class="fill">해커톤 대회명</span></span><span class="item-role">· <span class="fill">역할 / 수상</span></span>
+    </td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM</span></td>
+  </tr>
+  <tr><td height="5" colspan="2"></td></tr>
+
+  <!-- 추가 활동 행 — 복사해서 사용 -->
+  <tr>
+    <td valign="top">
+      <span class="item-name"><span class="fill">활동명</span></span><span class="item-role">· <span class="fill">역할</span></span>
+    </td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+  <tr><td height="5" colspan="2"></td></tr>
+
+  <tr>
+    <td valign="top">
+      <span class="item-name"><span class="fill">활동명</span></span><span class="item-role">· <span class="fill">역할</span></span>
+    </td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+  <tr><td height="5" colspan="2"></td></tr>
+
+  <tr>
+    <td valign="top">
+      <span class="item-name"><span class="fill">활동명</span></span><span class="item-role">· <span class="fill">역할</span></span>
+    </td>
+    <td width="130" valign="top" class="item-date"><span class="fill">YYYY.MM ~ YYYY.MM</span></td>
+  </tr>
+
+</table>
+
+
+<!-- ══ 기술 스택 ══ -->
+<div class="sec-title">기술 스택</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+  <tr>
+    <td width="64" valign="top" class="stack-cat">Backend</td>
+    <td valign="top" class="stack-val">Java · Spring Boot · Kafka · Redis · Elasticsearch · PostgreSQL · MySQL · JPA · QueryDSL · MSA · Spring Cloud</td>
+  </tr>
+  <tr>
+    <td valign="top" class="stack-cat">Infra</td>
+    <td valign="top" class="stack-val">AWS (RDS · ElastiCache · S3) · Docker · Kubernetes (Helm) · GitHub Actions</td>
+  </tr>
+  <tr>
+    <td valign="top" class="stack-cat">AI Tools</td>
+    <td valign="top" class="stack-val">Claude Code · Cursor · Antigravity · Agentation</td>
+  </tr>
+</table>
+
+
+<!-- ══ 프로젝트 ══ -->
+<div class="sec-title">프로젝트</div>
+
+<!-- CineStream -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
+  <tr>
+    <td valign="top" class="proj-name">CineStream</td>
+    <td width="220" valign="top" class="proj-meta">
+      2026.03 ~ 2026.05 &nbsp;·&nbsp; PO · 팀장 &nbsp;·&nbsp; 5인 &nbsp;·&nbsp;
+      <a href="https://github.com/prgrms-be-adv-devcourse/beadv5_5_3M_BE">GitHub</a>
+    </td>
+  </tr>
+</table>
+<div class="proj-desc">영화 티켓팅과 라이브 스트리밍을 통합한 OTT 플랫폼 — MSA 9개 서비스</div>
+<div class="proj-role"><strong>담당</strong> &nbsp;티켓 서비스 · 스트리밍 서비스 구현 &nbsp;·&nbsp; 데일리 스크럼 진행 &nbsp;·&nbsp; 일정 관리</div>
+<ul class="bullets">
+  <li>MSA 9개 서비스 + Apache Kafka 비동기 메시징으로 서비스 간 결합도 분리</li>
+  <li>Redis 대기열 · 재고 관리로 선착순 티켓팅 구현 (동시성 제어)</li>
+  <li>ffmpeg HLS 라이브 송출 + WebSocket 실시간 채팅 구현</li>
+</ul>
+<div class="ts">
+  <div class="ts-head">트러블슈팅</div>
+  <div class="ts-body">
+    <strong>문제</strong> @Transactional 내 Redis · HTTP · Kafka 혼재 → DB 롤백 시 부수 효과 잔존, 정합성 파괴<br/>
+    <strong>해결</strong> @TransactionalEventListener(AFTER_COMMIT)으로 부수 효과를 커밋 후로 분리, rollback 콜백에 HTTP 보상 환불 등록<br/>
+    <strong>결과</strong> TX 7건 중 6건 · KFK 5건 전수 RESOLVED, QueueDrainConsumer(concurrency=4)로 백프레셔 안정화
+  </div>
+</div>
+<div class="tags">
+  <span class="tag">Java 21</span> <span class="tag">Spring Boot 4.0.4</span> <span class="tag">Spring Cloud Gateway</span>
+  <span class="tag">PostgreSQL 18</span> <span class="tag">Redis 7</span> <span class="tag">Kafka (KRaft)</span>
+  <span class="tag">Elasticsearch 8</span> <span class="tag">Quartz</span> <span class="tag">Spring AI</span>
+  <span class="tag">ffmpeg HLS</span> <span class="tag">Kubernetes (Helm)</span> <span class="tag">GitHub Actions</span>
+</div>
+
+<hr class="divider" style="margin-top:10px;" />
+
+<!-- 동네마켓 -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px; margin-top:10px;">
+  <tr>
+    <td valign="top" class="proj-name">동네마켓</td>
+    <td width="220" valign="top" class="proj-meta">
+      2026.01 ~ 2026.02 &nbsp;·&nbsp; PO · 팀장 &nbsp;·&nbsp; 6인 &nbsp;·&nbsp;
+      <a href="https://github.com/lion-final-project/final-back">GitHub</a>
+    </td>
+  </tr>
+</table>
+<div class="proj-desc">고객 · 로컬 마트 · 라이더 · 관리자를 잇는 동네 배송 플랫폼</div>
+<div class="proj-role"><strong>담당</strong> &nbsp;PO 데일리 스크럼 주관 · 의견 중재 &nbsp;·&nbsp; 라이더 모듈 · 위치 기반 상점 검색 구현</div>
+<ul class="bullets">
+  <li>PostGIS 기반 가게 위치 · 사용자 현재 위치를 활용한 거리 필터링</li>
+  <li>라이더 실시간 좌표를 Redis GEO로 관리, 픽업지 10km 이내 라이더에 SSE 발행</li>
+  <li>Redis 분산 락(setIfAbsent TTL 5초)으로 동일 배달건 다중 수락 차단</li>
+</ul>
+<div class="ts">
+  <div class="ts-head">트러블슈팅</div>
+  <div class="ts-body">
+    <strong>문제</strong> 라이더 좌표를 3~5초 주기로 PostgreSQL에 갱신 → 디스크 I/O 폭증, Row-level Lock 경합으로 결제 지연<br/>
+    <strong>해결</strong> 실시간 좌표를 Redis GEO search로 이관, SET·SCARD O(1)로 동시 배달 3건 제한<br/>
+    <strong>결과</strong> DB 위치 업데이트 쿼리 약 90% 제거, 분산 락 · Atomic Counter로 중복 배차 차단
+  </div>
+</div>
+<div class="tags">
+  <span class="tag">Java 21</span> <span class="tag">Spring Boot 3.5</span> <span class="tag">Spring Batch 5</span>
+  <span class="tag">PostgreSQL 16 + PostGIS</span> <span class="tag">Redis 7 Cluster</span>
+  <span class="tag">OpenFeign</span> <span class="tag">Toss Payments</span>
+  <span class="tag">AWS</span> <span class="tag">Docker</span> <span class="tag">GitHub Actions</span>
+</div>
+
+</body>
+</html>

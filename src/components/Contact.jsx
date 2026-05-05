@@ -1,5 +1,4 @@
-import { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const MailIcon = () => (
   <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -22,20 +21,7 @@ const LinkIcon = () => (
   </svg>
 );
 
-const bootUpVariants = {
-  hidden: { opacity: 0, rotateX: -45, y: 60, scale: 0.9 },
-  visible: {
-    opacity: 1, rotateX: 0, y: 0, scale: 1,
-    transition: { duration: 0.8, type: 'spring', bounce: 0.3 }
-  },
-};
-
 export default function Contact({ profile }) {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start end", "end start"]
-  });
 
   const githubUrl =
     profile.github && !profile.github.includes('[')
@@ -70,7 +56,7 @@ export default function Contact({ profile }) {
   ];
 
   return (
-    <section id="contact" ref={containerRef} className="relative z-10 py-32 overflow-hidden">
+    <section id="contact" className="relative z-10 py-32">
       <div className="container mx-auto px-6 max-w-6xl">
         <div className="mb-24">
           <p className="text-[var(--accent)] font-mono text-sm tracking-widest uppercase mb-4 flex items-center gap-2">
@@ -80,37 +66,26 @@ export default function Contact({ profile }) {
           <h2 className="text-4xl md:text-5xl font-bold text-[var(--text)]">연락처</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 1200 }}>
-          {contactItems.map((item, i) => {
-            const yTransform = useTransform(scrollYProgress, [0, 1], [i * 15, -(i * 20)]);
-            
-            return (
-              <motion.div 
-                key={item.url} 
-                style={{ y: yTransform }}
-                className={i % 2 !== 0 ? "md:mt-6 lg:mt-0" : ""}
-              >
-                <motion.a
-                  href={item.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={bootUpVariants}
-                  initial="hidden"
-                  whileInView="visible"
-                  viewport={{ once: true, margin: "-100px" }}
-                  transition={{ delay: i * 0.1 }}
-                  style={{ transformOrigin: "bottom center" }}
-                  className="flex flex-col h-full bg-[var(--bg-elev)] border border-[var(--border)] rounded-xl p-8 shadow-[var(--shadow-lg)] hover:border-[var(--accent)] group transition-colors"
-                >
-                  <div className="w-12 h-12 bg-[var(--surface)] border border-[var(--border)] rounded-full flex items-center justify-center text-[var(--accent)] mb-6 group-hover:bg-[var(--accent)] group-hover:text-[var(--bg)] transition-colors">
-                    {item.icon}
-                  </div>
-                  <h3 className="text-[var(--text-muted)] font-mono text-sm mb-2">> {item.label}</h3>
-                  <p className="text-[var(--text)] font-medium break-all">{item.value}</p>
-                </motion.a>
-              </motion.div>
-            );
-          })}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {contactItems.map((item, i) => (
+            <motion.a
+              key={item.url}
+              href={item.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-100px" }}
+              transition={{ duration: 0.5, delay: i * 0.1 }}
+              className="flex flex-col h-full bg-[var(--bg-elev)] border border-[var(--border)] rounded-xl p-8 shadow-[var(--shadow-lg)] hover:border-[var(--accent)] group transition-colors"
+            >
+              <div className="w-12 h-12 bg-[var(--surface)] border border-[var(--border)] rounded-full flex items-center justify-center text-[var(--accent)] mb-6 group-hover:bg-[var(--accent)] group-hover:text-[var(--bg)] transition-colors">
+                {item.icon}
+              </div>
+              <h3 className="text-[var(--text-muted)] font-mono text-sm mb-2">{'>'} {item.label}</h3>
+              <p className="text-[var(--text)] font-medium break-all">{item.value}</p>
+            </motion.a>
+          ))}
         </div>
       </div>
     </section>

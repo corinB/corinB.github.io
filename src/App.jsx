@@ -4,22 +4,17 @@ import Nav from './components/Nav.jsx';
 import Hero from './components/Hero.jsx';
 import About from './components/About.jsx';
 import Projects from './components/Projects.jsx';
-import Skills from './components/Skills.jsx';
-import Resume from './components/Resume.jsx';
 import Contact from './components/Contact.jsx';
 import Footer from './components/Footer.jsx';
 import { useTheme } from './hooks/useTheme.js';
 import { profile } from './data/profile.js';
 import { projects } from './data/projects.js';
-import { skillGroups } from './data/skills.js';
 
 const Agentation = import.meta.env.DEV
   ? lazy(() =>
       import('agentation').then((m) => ({ default: m.Agentation }))
     )
   : null;
-
-import TerminalWidget from './components/TerminalWidget.jsx';
 
 export default function App() {
   const { theme, toggle } = useTheme();
@@ -49,13 +44,9 @@ export default function App() {
         <Hero profile={profile} />
         <About profile={profile} />
         <Projects projects={projects} />
-        <Skills groups={skillGroups} />
-        <Resume />
         <Contact profile={profile} />
       </main>
       <Footer brand={brand} />
-
-      <TerminalWidget theme={theme} onToggle={toggle} />
 
       {Agentation ? (
         <Suspense fallback={null}>

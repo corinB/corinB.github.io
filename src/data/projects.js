@@ -7,6 +7,20 @@ export const projects = [
     repo: 'https://github.com/prgrms-be-adv-devcourse/beadv5_5_3M_BE',
     demo: 'https://www.youtube.com/watch?v=krwVaERh1qE',
     lead: 'PO · 팀장',
+    personaTags: ['설계', 'AI', '검증'],
+    aiWorkflow: {
+      summary:
+        '문서 기반으로 스프린트별 작업과 보고서 생성을 AI에 지시. 보고서로 1차 검증 후 스프린트별 통합테스트로 최종 확인.',
+      detail:
+        '설계 문서를 기반으로 스프린트별 작업과 작업 보고서 생성을 AI에 함께 지시했습니다. 보고서를 1차 검증한 뒤 스프린트별 통합테스트로 최종 확인하는 사이클을 반복했습니다.',
+      items: [
+        { label: '모델 분담', value: '설계 Opus  /  코딩 Sonnet  /  문서 Haiku' },
+        { label: '컨텍스트', value: '중요 작업 전 토큰 점검 → 압축 또는 초기화' },
+        { label: '산출물 표준', value: 'output style 지정으로 산출 문서 포맷 통일' },
+        { label: '문서 최신화', value: '주기적 /init 으로 프로젝트 문서 갱신' },
+        { label: '프론트엔드', value: 'Figma AI 초안 → Agentation·Antigravity 디테일 수정 → 스프린트별 연결' },
+      ],
+    },
     stack: [
       'Java 21',
       'Spring Boot 4.0.4',
@@ -19,7 +33,7 @@ export const projects = [
       'Spring Batch 5',
       'Spring AI (OpenAI)',
       'ffmpeg (HLS Streaming)',
-      'Docker Compose',
+      'Kubernetes (Helm)',
       'GitHub Actions CI/CD',
     ],
     architectureDiagram: `
@@ -85,6 +99,18 @@ flowchart LR
     repo: 'https://github.com/lion-final-project/final-back',
     demo: 'https://www.youtube.com/watch?v=hY1qML2QABM',
     lead: 'PO · 팀장',
+    personaTags: ['설계', 'AI', '검증'],
+    aiWorkflow: {
+      summary:
+        '문서 기반으로 작업을 스프린트 단위로 나누어 AI에 위임하고, 산출물을 직접 테스트로 검증.',
+      detail:
+        '설계 문서를 기반으로 작업을 스프린트 단위로 분할해 AI에 위임했습니다. 산출물은 본인이 직접 통합테스트로 검증하는 사이클을 반복했고, output style을 별도 지정해 산출 문서의 포맷을 일관되게 유지했습니다.',
+      items: [
+        { label: '검증 방식', value: '스프린트 완료 후 직접 통합테스트' },
+        { label: '산출물 표준', value: 'output style 지정으로 문서 포맷 통일' },
+        { label: '프론트엔드', value: 'Antigravity·Agentation으로 초안 생성 → API 완성별 연결' },
+      ],
+    },
     stack: [
       'Java 21',
       'Spring Boot 3.5.10',
@@ -110,7 +136,7 @@ graph TD
         Filter["JwtAuthenticationFilter"]
         Controllers["Controllers"]
         Services["Services"]
-        
+
         Filter --> Controllers
         Controllers --> Services
     end
@@ -144,7 +170,7 @@ graph TD
       problem:
         '실시간 라이더 좌표를 3~5초 주기로 PostgreSQL에 갱신하면서 디스크 I/O가 폭증했고, ACID 보장을 위한 Row-level Lock 경합으로 피크 타임 API 응답이 지연됐습니다. 영속성이 필요 없는 휘발성 좌표가 DB 커넥션을 점유해 결제·주문 처리에까지 영향이 번졌습니다.',
       solution:
-        '실시간 좌표는 영속성보다 최신성이 중요한 휘발성 데이터로 보고 쓰기 부하를 Redis로 이관했습니다. 공간 탐색은 GEORADIUS로 메모리 내 O(log N) 처리해 픽업지 10km 이내 라이더를 추리고 SSE로 푸시했고, 동일 배달건 다중 수락은 Redisson 분산 락으로 원자성을 보장했습니다. 라이더별 동시 배달 3건 제한은 Redis SET·SCARD로 O(1) 카운팅했고, 운행 종료 시 좌표를 즉시 삭제하고 maxmemory `allkeys-lru` 정책으로 메모리를 안전하게 관리했습니다.',
+        '실시간 좌표는 영속성보다 최신성이 중요한 휘발성 데이터로 보고 쓰기 부하를 Redis로 이관했습니다. 공간 탐색은 Redis GEO search로 메모리 내 O(log N) 처리해 픽업지 10km 이내 라이더를 추리고 SSE로 푸시했고, 동일 배달건 다중 수락은 Redis 분산 락(setIfAbsent TTL 5초)으로 원자성을 보장했습니다. 라이더별 동시 배달 3건 제한은 Redis SET·SCARD로 O(1) 카운팅했고, 운행 종료 시 좌표를 즉시 삭제하고 maxmemory `allkeys-lru` 정책으로 메모리를 안전하게 관리했습니다.',
       result:
         '위치 업데이트 쿼리를 RDBMS에서 Redis로 옮겨 DB 쓰기 부하의 약 90%를 덜어냈고(전체 쿼리 중 위치 업데이트 비중 기준), 메모리 기반 연산으로 라이더 주변 목록 렌더링 응답 속도가 향상됐습니다. 분산 락과 Atomic Counter로 중복 배차·동시 배달 제한 위반을 차단했습니다.',
     },
