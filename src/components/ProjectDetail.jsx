@@ -89,9 +89,8 @@ const AiSlide = ({ project }) => (
     </p>
 
     {project.aiWorkflow.items?.length > 0 && (
-      <div>
-        <p className="text-[11px] font-mono text-[var(--accent)] tracking-widest uppercase mb-4">워크플로우</p>
-        <div className="flex flex-col divide-y divide-[var(--border)]">
+      <div className="border-t border-[var(--border)] pt-6">
+        <div className="flex flex-col divide-y divide-[var(--border-strong)]">
           {project.aiWorkflow.items.map((item) => (
             <div key={item.label} className="flex gap-5 items-baseline py-3 first:pt-0 last:pb-0">
               <span className="font-mono text-[11px] text-[var(--accent)] font-bold tracking-wider shrink-0 w-[88px]">
@@ -118,9 +117,9 @@ const TroubleshootingSlide = ({ project }) => {
   };
 
   const tabs = [
-    { id: 'problem', label: '문제', activeClass: 'bg-red-500/10 text-red-400 border-red-500/30 shadow-[0_0_15px_rgba(239,68,68,0.1)]' },
-    { id: 'solution', label: '해결', activeClass: 'bg-blue-500/10 text-blue-400 border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.1)]' },
-    { id: 'result', label: '결과', activeClass: 'bg-green-500/10 text-green-400 border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.1)]' },
+    { id: 'problem', label: '문제', activeClass: 'bg-red-500/15 text-red-400 border-red-500/60 shadow-[inset_0_-2px_0_0_rgba(239,68,68,0.7)]' },
+    { id: 'solution', label: '해결', activeClass: 'bg-blue-500/15 text-blue-400 border-blue-500/60 shadow-[inset_0_-2px_0_0_rgba(59,130,246,0.7)]' },
+    { id: 'result', label: '결과', activeClass: 'bg-green-500/15 text-green-400 border-green-500/60 shadow-[inset_0_-2px_0_0_rgba(34,197,94,0.7)]' },
   ];
 
   const contentColor = active === 'problem' ? 'border-l-red-500/30' : active === 'solution' ? 'border-l-blue-500/30' : 'border-l-green-500/30';
@@ -230,10 +229,13 @@ export default function ProjectDetail({ project, onClose }) {
 
         {/* 프로젝트 헤더 */}
         <div className="px-8 pt-5 pb-4 shrink-0 border-b border-[var(--border)]">
-          <h2 className="text-xl font-bold text-[var(--text)] mb-1">{project.name}</h2>
+          <div className="flex items-baseline gap-3 mb-1">
+            <h2 className="text-xl font-bold text-[var(--text)]">{project.name}</h2>
+            <span className="text-sm font-mono font-semibold text-[var(--accent)]">{project.lead}</span>
+          </div>
           <p className="text-xs text-[var(--text-muted)]">
             {project.period && !project.period.includes('[') ? `${project.period} · ` : ''}
-            {project.lead} · {project.summary}
+            {project.summary}
           </p>
         </div>
 
@@ -253,7 +255,7 @@ export default function ProjectDetail({ project, onClose }) {
               {currentSlide.id === 'architecture' && project.architectureDiagram && (
                 <div
                   onClick={() => setIsZoomed(true)}
-                  className="flex-1 w-full min-h-[400px] rounded border border-[var(--border)] flex items-center justify-center overflow-hidden p-4 cursor-zoom-in group/diag relative"
+                  className="h-full w-full rounded border border-[var(--border)] flex items-center justify-center overflow-hidden p-4 cursor-zoom-in group/diag relative"
                 >
                   <div className="absolute top-4 right-4 opacity-0 group-hover/diag:opacity-100 transition-opacity bg-[var(--surface-strong)] p-2 rounded border border-[var(--border)] text-[var(--text-faint)] flex items-center gap-2 text-xs z-10">
                     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5"><path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/></svg>
