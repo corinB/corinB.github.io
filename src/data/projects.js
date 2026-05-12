@@ -1,5 +1,73 @@
 export const projects = [
   {
+    id: 'live-class',
+    name: 'live-class',
+    summary: 'AI 코드 생성을 안전하게 통제하는 멀티에이전트 하네스 — 라이브 강의 수강신청 도메인을 6개 서브에이전트가 순차/병렬로 산출하도록 단독 설계·구축한 개인 워크스페이스',
+    period: '2026.05 ~ 진행중',
+    repo: 'https://github.com/corinB/live-class',
+    demo: '',
+    lead: '개인 · 단독 설계·구축',
+    personaTags: ['설계', 'AI', '검증'],
+    featuredStack: ['Bash Hooks'],
+    aiWorkflow: {
+      summary:
+        '도메인 → 동시성 → 태스크 분해 → 인프라/CI-CD → Git 규약 → 워커 실행을 6개 서브에이전트로 단계화. 각 단계를 슬래시 스킬로 호출하고, 상류 산출물 검증을 호출 전 게이트로 둠.',
+      detail:
+        '메인 세션은 직접 코드를 쓰지 않고 에이전트에 일을 시킨다. 각 단계의 산출물이 다음 단계의 입력이 되며, 슬래시 스킬은 상류 산출물이 없으면 호출 자체가 막히도록 설계했다.',
+      items: [
+        { label: '에이전트 분담', value: 'ddd-domain-architect / concurrency-architect / scrum-task-decomposer / infra-cicd-operator / git-master-conventions / blueprint-executor-worker' },
+        { label: '안전 통제', value: 'settings.json 자동 허용·차단 + 7개 Bash 훅 + 워크트리 격리' },
+        { label: '상태 가시화', value: 'SessionStart·UserPromptSubmit 훅이 파이프라인 배지를 매 턴 컨텍스트에 주입' },
+      ],
+    },
+    stack: [
+      'Java 21',
+      'Spring Boot 4.0.6',
+      'Gradle',
+      'PostgreSQL',
+      'Redis',
+      'Docker Compose',
+      'Bash Hooks',
+      'Worktree Isolation',
+      'Claude Code Agent SDK',
+    ],
+    architectureDiagram: `
+graph TD
+    A[ddd-domain-architect] -->|DOCS.md| B[concurrency-architect]
+    B -->|ARCHITECTURE.md| C[scrum-task-decomposer]
+    C -->|plan/before/*.md| D[infra-cicd-operator]
+    C -->|plan/before/*.md| E[git-master-conventions]
+    D -->|docker-compose.yml<br/>Dockerfile<br/>ci-cd.yml| F[blueprint-executor-worker]
+    E -->|CONTRIBUTING.md<br/>pull_request_template.md| F
+    F -->|src/**, plan/after/N.md| G[Merge via PR]
+    `,
+    highlights: [
+      '6 서브에이전트 순차/병렬 파이프라인 (도메인 → 동시성 → 태스크 분해 → 인프라·CI-CD → Git 규약 → 워커)',
+      '슬래시 스킬 6개로 에이전트 호출 + 상류 산출물 검증 게이트',
+      'Bash 훅 7개로 destructive 차단·시크릿 차단·설계 문서 변경 경고·워크트리 경계 보호',
+      'worker만 isolation: "worktree" 격리로 병렬 실행 시 충돌 차단',
+    ],
+    role: '단독 설계·구축. 도메인 모델 1차 정의, 6에이전트 역할 경계와 의존성 순서, 자동 허용·차단 정책 기준, 7개 훅 스크립트 작성·검증 일체를 본인이 결정·수행한 개인 프로젝트.',
+    troubleshooting: {
+      problem: [
+        'AI에 코드 생성을 맡길 때 권한·범위 제약이 없으면 시크릿 노출·파괴적 명령·의도치 않은 파일 수정 위험.',
+        '여러 에이전트를 동시에 돌리면 같은 파일을 만져 충돌·정합성 깨짐.',
+        '상류 산출물(도메인 문서 등)이 바뀌었는데 후속 단계가 알아차리지 못하면 잘못된 입력으로 코드가 만들어짐.',
+      ],
+      solution: [
+        'settings.json에 자동 허용·차단 패턴 명시(ls·gradle·docker compose는 허용, .env·*.key·credentials는 차단).',
+        'pre-bash-block-destructive.sh 훅으로 rm -rf·git push --force·git reset --hard를 permissionDecision: deny로 끊음.',
+        'worker만 isolation: "worktree"로 격리해 메인 트리 침범 차단.',
+        'SessionStart·UserPromptSubmit 훅이 매 턴 파이프라인 상태 배지를 컨텍스트에 주입, Stop 훅이 설계 문서 변경 시 경고.',
+      ],
+      result: [
+        '에이전트 6개·슬래시 스킬 6개·Bash 훅 7개가 한 워크스페이스 안에서 충돌 없이 병렬 실행.',
+        '시크릿·파괴적 명령은 호출 자체가 막힘.',
+        '상류 산출물 변경이 다음 단계로 자동 전달되어 입력 정합성 유지.',
+      ],
+    },
+  },
+  {
     id: 'cinestream',
     name: 'CineStream',
     summary: '영화 티켓팅과 라이브 스트리밍을 통합한 OTT 플랫폼 (5인 팀 프로젝트)',

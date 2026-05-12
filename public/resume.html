@@ -7,14 +7,14 @@
   @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css');
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  @page { size: A4; margin: 18mm 20mm; }
+  @page { size: A4; margin: 10mm 15mm; }
 
   body {
     font-family: 'Pretendard', 'Malgun Gothic', '맑은 고딕', sans-serif;
     font-size: 10.5pt;
     color: #1e1e1e;
     background: #fff;
-    line-height: 1.7;
+    line-height: 1.4;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
     width: 100%;
@@ -24,35 +24,34 @@
 
   /* 섹션 제목 */
   .sec-title {
-    font-size: 8.5pt;
+    font-size: 16pt;
     font-weight: 700;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #6b7280;
-    border-bottom: 1px solid #d1d5db;
-    padding-bottom: 3px;
-    margin-bottom: 10px;
+    color: #111827;
+    border-left: 5px solid #111827;
+    padding-left: 10px;
+    margin-bottom: 8px;
     margin-top: 18px;
+    line-height: 1.15;
   }
 
   .name { font-size: 28pt; font-weight: 800; letter-spacing: -0.5px; line-height: 1.1; }
-  .job-title { font-size: 11pt; font-weight: 600; color: #374151; margin-top: 4px; }
+  .job-title { font-size: 14pt; font-weight: 600; color: #374151; margin-top: 4px; }
   .contact { font-size: 9.5pt; color: #4b5563; margin-top: 6px; line-height: 1.8; }
   .contact a { color: #1d4ed8; text-decoration: none; }
 
   /* 항목 행 (기관명 + 날짜) */
-  .item-name { font-size: 10.5pt; font-weight: 700; color: #111827; }
-  .item-role { font-size: 9.5pt; font-weight: 400; color: #374151; margin-left: 4px; }
-  .item-sub { font-size: 9.5pt; color: #6b7280; margin-top: 1px; }
-  .item-date { font-size: 9pt; color: #6b7280; text-align: right; white-space: nowrap; }
+  .item-name { font-size: 10.5pt; font-weight: 400; color: #1e1e1e; }
+  .item-role { font-size: 10.5pt; font-weight: 400; color: #374151; margin-left: 4px; }
+  .item-sub { font-size: 10.5pt; color: #6b7280; margin-top: 1px; }
+  .item-date { font-size: 9.5pt; color: #6b7280; text-align: right; white-space: nowrap; }
 
   /* 대외활동 개조식 */
   .subsection {
-    font-size: 10.5pt;
+    font-size: 12pt;
     font-weight: 700;
     color: #1e1e1e;
-    padding-top: 8px;
-    padding-bottom: 3px;
+    padding-top: 5px;
+    padding-bottom: 2px;
     letter-spacing: -0.2px;
   }
   .act-row .bullet {
@@ -63,32 +62,32 @@
     font-weight: 700;
   }
   .act-row .act-name { font-size: 10.5pt; color: #1e1e1e; }
-  .act-row .act-role { font-size: 10pt; color: #4b5563; margin-left: 2px; }
+  .act-row .act-role { font-size: 10.5pt; color: #4b5563; margin-left: 2px; }
   .act-row .act-role strong { font-weight: 700; color: #111827; }
 
   /* 스택 */
-  .stack-cat { font-size: 8.5pt; font-weight: 700; color: #374151; white-space: nowrap; }
-  .stack-val { font-size: 9.5pt; color: #374151; padding-left: 8px; }
+  .stack-cat { font-size: 9pt; font-weight: 700; color: #374151; white-space: nowrap; }
+  .stack-val { font-size: 10.5pt; color: #374151; padding-left: 8px; }
 
   /* 프로젝트 */
-  .proj-name { font-size: 12pt; font-weight: 800; color: #111827; }
-  .proj-meta { font-size: 9pt; color: #6b7280; text-align: right; white-space: nowrap; }
+  .proj-name { font-size: 13pt; font-weight: 700; color: #111827; }
+  .proj-meta { font-size: 9.5pt; color: #6b7280; text-align: right; white-space: nowrap; }
   .proj-meta a { color: #1d4ed8; text-decoration: none; }
-  .proj-desc { font-size: 9.5pt; color: #4b5563; margin-top: 2px; }
-  .proj-role { font-size: 9.5pt; margin-top: 3px; margin-bottom: 4px; }
+  .proj-desc { font-size: 10.5pt; color: #4b5563; margin-top: 2px; }
+  .proj-role { font-size: 10.5pt; margin-top: 3px; margin-bottom: 4px; }
   .proj-role strong { font-weight: 700; }
 
-  ul.bullets { padding-left: 16px; margin: 3px 0 6px; }
-  ul.bullets li { font-size: 9.5pt; color: #1e1e1e; margin-bottom: 3px; }
+  ul.bullets { padding-left: 16px; margin: 2px 0 4px; }
+  ul.bullets li { font-size: 10.5pt; color: #1e1e1e; margin-bottom: 2px; }
 
   .ts {
     background: #f9fafb;
-    border-left: 3px solid #9ca3af;
-    padding: 5px 9px;
-    margin-bottom: 5px;
+    border-left: 3px solid #4b5563;
+    padding: 4px 8px;
+    margin-bottom: 3px;
   }
   .ts-head { font-size: 8pt; font-weight: 700; color: #6b7280; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 2px; }
-  .ts-body { font-size: 9.5pt; color: #374151; line-height: 1.55; }
+  .ts-body { font-size: 10.5pt; color: #374151; line-height: 1.55; }
   .ts-body strong { font-weight: 700; color: #1e1e1e; }
   .ts-section { margin-top: 3px; }
   .ts-section:first-child { margin-top: 0; }
@@ -96,20 +95,7 @@
   ul.ts-list li { padding-left: 12px; position: relative; margin-bottom: 1px; }
   ul.ts-list li::before { content: '▸'; position: absolute; left: 0; top: 0; color: #9ca3af; font-weight: 700; font-size: 8.5pt; }
 
-  .tags { margin-top: 4px; }
-  .tag {
-    display: inline-block;
-    font-size: 8.5pt;
-    background: #f3f4f6;
-    border: 1px solid #d1d5db;
-    border-radius: 3px;
-    padding: 0 5px;
-    margin: 1px 2px 1px 0;
-    color: #4b5563;
-    font-family: 'Consolas', 'D2Coding', monospace;
-  }
-
-  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 10px 0; }
+  .divider { border: none; border-top: 1px solid #e5e7eb; margin: 6px 0; }
 </style>
 </head>
 <body>
@@ -120,7 +106,7 @@
   <tr>
     <td valign="top">
       <div class="name">백종현</div>
-      <div class="job-title">Java · Spring 백엔드 신입</div>
+      <div class="job-title">Java · Spring 백엔드 신입 · 가치를 먼저 고민하는 백엔드 엔지니어</div>
       <div style="font-size: 9pt; color: #6b7280; margin-top: 2px; font-weight: 500;">팀 리딩 경험 다수 (PO · 팀장)</div>
       <div class="contact">
         생년월일 2001.05.21 &nbsp;·&nbsp; 거주지 경기도 시흥시<br/>
@@ -136,42 +122,54 @@
 </table>
 
 
-<!-- ══ 학력 ══ -->
-<div class="sec-title">학력</div>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
+<!-- ══ 자기소개 ══ -->
+<div class="sec-title">자기소개</div>
+<div style="font-size:10.5pt; color:#1e1e1e; line-height:1.6;">
+  <p>창업 동아리 활동을 통해, 기능을 '어떻게 구현할지'에 앞서 <strong style="color:#111827;">'사용자가 왜 이 기능을 원하는지'</strong>를 먼저 고민하는 태도를 기를 수 있었습니다. AI를 업무에 활용할 때도 이러한 주도적인 태도를 유지하고 있습니다. AI가 생성한 코드를 그대로 받아들이기보다, 제가 먼저 시스템의 도메인 규칙과 경계를 명확히 설계하고 AI가 그 구조 안에서 동작하도록 제어하며 효율성을 높이고 있습니다.</p>
+</div>
+
+
+<!-- ══ 기술 스택 ══ -->
+<div class="sec-title">기술 스택</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="2">
   <tr>
+    <td width="80" valign="top" class="stack-cat"><strong>Backend</strong></td>
+    <td valign="top" class="stack-val">Java · Spring Boot · Kafka · Redis</td>
+  </tr>
+  <tr>
+    <td valign="top" class="stack-cat"><strong>Infra</strong></td>
+    <td valign="top" class="stack-val">AWS · Docker · Kubernetes</td>
+  </tr>
+  <tr>
+    <td valign="top" class="stack-cat"><strong>AI Tools</strong></td>
+    <td valign="top" class="stack-val">Claude Code · Cursor · Antigravity</td>
+  </tr>
+  <tr>
+    <td valign="top" class="stack-cat"><strong>AI Eng</strong></td>
+    <td valign="top" class="stack-val">Harness · Context · Prompt</td>
+  </tr>
+</table>
+
+
+<!-- ══ 학력 및 교육 ══ -->
+<div class="sec-title">학력 및 교육</div>
+<table width="100%" border="0" cellpadding="0" cellspacing="3">
+  <tr class="act-row">
     <td valign="top">
-      <div class="item-name">대구대학교</div>
-      <div class="item-sub">컴퓨터공학 · 전자정보융합전공 &nbsp;|&nbsp; 졸업 &nbsp;|&nbsp; 학점 3.82 / 4.5</div>
+      <span class="bullet">·</span><span class="item-name">대구대학교</span><span class="item-role"> · 컴퓨터공학 · 전자정보융합전공 · 졸업 · 학점 3.82 / 4.5</span>
     </td>
-    <td width="130" valign="top" class="item-date">
-      2020.03 ~ 2026.02
-    </td>
+    <td width="130" valign="top" class="item-date">2020.03 ~ 2026.02</td>
   </tr>
-</table>
-
-
-<!-- ══ 병역 ══ -->
-<div class="sec-title">병역</div>
-<table width="100%" border="0" cellpadding="0" cellspacing="0">
-  <tr>
-    <td valign="top" style="font-size:9.5pt;">
-      군필 &nbsp;·&nbsp; 육군 병장 만기제대
+  <tr class="act-row">
+    <td valign="top">
+      <span class="bullet">·</span><span class="item-name">프로그래머스 백엔드 데브코스 단기심화 5기</span>
     </td>
-  </tr>
-</table>
-
-
-<!-- ══ 교육 ══ -->
-<div class="sec-title">교육</div>
-<table width="100%" border="0" cellpadding="0" cellspacing="4">
-  <tr>
-    <td valign="top" class="item-name">프로그래머스 백엔드 데브코스 단기심화 5기</td>
     <td width="130" valign="top" class="item-date">2026.03 ~ 2026.05</td>
   </tr>
-  <tr><td height="4" colspan="2"></td></tr>
-  <tr>
-    <td valign="top" class="item-name">멋쟁이사자처럼 자바 백엔드 19기</td>
+  <tr class="act-row">
+    <td valign="top">
+      <span class="bullet">·</span><span class="item-name">멋쟁이사자처럼 자바 백엔드 19기</span>
+    </td>
     <td width="130" valign="top" class="item-date">2025.08 ~ 2026.02</td>
   </tr>
 </table>
@@ -200,12 +198,6 @@
 
   <tr class="act-row">
     <td valign="top">
-      <span class="bullet">·</span><span class="act-name">대구대 DU-HEART 인증</span><span class="act-role"> · <strong>최우수</strong></span>
-    </td>
-    <td width="130" valign="top" class="item-date">2026</td>
-  </tr>
-  <tr class="act-row">
-    <td valign="top">
       <span class="bullet">·</span><span class="act-name">대구대 IT/공학계열 작품 경진대회</span><span class="act-role"> · <strong>최우수상</strong></span>
     </td>
     <td width="130" valign="top" class="item-date">2025</td>
@@ -224,31 +216,10 @@
   </tr>
   <tr class="act-row">
     <td valign="top">
-      <span class="bullet">·</span><span class="act-name">영남대 모형전기차 자율주행 경진대회</span><span class="act-role"> · <strong>최우수상</strong></span>
-    </td>
-    <td width="130" valign="top" class="item-date">2023</td>
-  </tr>
-  <tr class="act-row">
-    <td valign="top">
       <span class="bullet">·</span><span class="act-name">호서대 소셜벤처 해커톤</span><span class="act-role"> · <strong>우수상</strong></span>
     </td>
     <td width="130" valign="top" class="item-date">2023</td>
   </tr>
-  <tr class="act-row">
-    <td valign="top">
-      <span class="bullet">·</span><span class="act-name">강원도 소방안전 AI 예측 경진대회</span><span class="act-role"> · <strong>우수상</strong></span>
-    </td>
-    <td width="130" valign="top" class="item-date">2022</td>
-  </tr>
-  <tr class="act-row">
-    <td valign="top">
-      <span class="bullet">·</span><span class="act-name">대구대 DU-IF 창업경진대회</span><span class="act-role"> · <strong>우수상</strong></span>
-    </td>
-    <td width="130" valign="top" class="item-date">2022</td>
-  </tr>
-
-  <tr><td colspan="2" class="subsection">해커톤 참가</td></tr>
-
   <tr class="act-row">
     <td valign="top">
       <span class="bullet">·</span><span class="act-name">Hugging Face LeRobot Worldwide Hackathon</span><span class="act-role"> · 참가</span>
@@ -263,26 +234,55 @@
 </table>
 
 
-<!-- ══ 기술 스택 ══ -->
-<div class="sec-title">기술 스택</div>
-<table width="100%" border="0" cellpadding="0" cellspacing="3">
+<!-- ══ 프로젝트 ══ -->
+<div class="sec-title">프로젝트</div>
+
+<!-- live-class -->
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
   <tr>
-    <td width="64" valign="top" class="stack-cat">Backend</td>
-    <td valign="top" class="stack-val">Java · Spring Boot · Kafka · Redis · Elasticsearch · PostgreSQL · MySQL · JPA · QueryDSL · MSA · Spring Cloud</td>
-  </tr>
-  <tr>
-    <td valign="top" class="stack-cat">Infra</td>
-    <td valign="top" class="stack-val">AWS (RDS · ElastiCache · S3) · Docker · Kubernetes (Helm) · GitHub Actions</td>
-  </tr>
-  <tr>
-    <td valign="top" class="stack-cat">AI Tools</td>
-    <td valign="top" class="stack-val">Claude Code · Cursor · Antigravity · Agentation</td>
+    <td valign="top" class="proj-name">live-class</td>
+    <td width="220" valign="top" class="proj-meta">
+      2026.05 ~ 진행중 &nbsp;·&nbsp; 개인 프로젝트 &nbsp;·&nbsp;
+      <a href="https://github.com/corinB/live-class">GitHub</a>
+    </td>
   </tr>
 </table>
+<div class="proj-desc">AI 코드 생성을 안전하게 통제하는 멀티에이전트 하네스 — 라이브 강의 수강신청 도메인을 6개 서브에이전트가 순차/병렬로 산출하도록 단독 설계·구축한 개인 워크스페이스</div>
+<div class="proj-role"><strong>도메인 모델·에이전트 역할 경계·하네스 정책·훅 스크립트 단독 설계·구축</strong> (개인 프로젝트)</div>
+<ul class="bullets">
+  <li>DDD 도메인 → 동시성 → 마이크로 태스크 분해 → 인프라·CI/CD → Git 규약 → 워커 실행의 6단계 파이프라인 정의, 각 단계를 6개 슬래시 스킬로 래핑해 상류 산출물 검증을 호출 전에 강제</li>
+  <li>7개 Bash 훅으로 SessionStart·UserPromptSubmit 상태 배지 주입, 설계 문서 변경 경고, rm -rf·git push --force·git reset --hard 차단, 워크트리 경계 밖 쓰기 방지</li>
+  <li>워커는 isolation: "worktree" 격리에서 단일 태스크 파일만 코드로 변환, settings.json 자동 허용·차단 패턴과 .claudeignore로 이중 방어선 구성</li>
+</ul>
+<div class="ts">
+  <div class="ts-head">트러블슈팅</div>
+  <div class="ts-body">
+    <div class="ts-section"><strong>문제</strong>
+      <ul class="ts-list">
+        <li>권한·범위 제약 없이 AI에 코드 생성을 맡기면 시크릿 노출·파괴적 명령·의도치 않은 파일 수정이 발생할 수 있음</li>
+        <li>에이전트 여러 개를 동시에 실행하면 같은 파일을 건드려 충돌·정합성이 깨짐</li>
+        <li>상류 산출물(도메인 문서 등)이 바뀌었는데 후속 단계가 알아채지 못하면 잘못된 입력으로 코드가 생성됨</li>
+      </ul>
+    </div>
+    <div class="ts-section"><strong>해결</strong>
+      <ul class="ts-list">
+        <li>settings.json에 자동 허용·차단 패턴 명시 — ls·gradle·docker compose는 허용, .env·*.key·credentials는 차단</li>
+        <li>pre-bash-block-destructive.sh 훅으로 <strong>rm -rf·git push --force·git reset --hard</strong>를 permissionDecision: deny로 차단</li>
+        <li>워커는 <strong>isolation: "worktree"</strong>로만 격리해 메인 트리를 침범하지 못하게 함</li>
+        <li>SessionStart·UserPromptSubmit 훅이 매 턴 파이프라인 상태 배지(DOCS:✓/✗·ARCH:✓/✗·before:N·after:M)를 컨텍스트에 주입하고, Stop 훅이 설계 문서 변경 시 경고를 발행</li>
+      </ul>
+    </div>
+    <div class="ts-section"><strong>결과</strong>
+      <ul class="ts-list">
+        <li>에이전트 6개·슬래시 스킬 6개·Bash 훅 7개가 한 워크스페이스 안에서 충돌 없이 병렬 실행됨</li>
+        <li>상류 산출물 변경이 다음 단계로 자동 전달되어 입력 정합성을 유지함</li>
+        <li>시크릿·파괴적 명령은 호출 자체가 차단됨</li>
+      </ul>
+    </div>
+  </div>
+</div>
 
-
-<!-- ══ 프로젝트 ══ -->
-<div class="sec-title" style="page-break-before: always; margin-top: 0;">프로젝트</div>
+<hr class="divider" />
 
 <!-- CineStream -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px;">
@@ -295,7 +295,7 @@
   </tr>
 </table>
 <div class="proj-desc">영화 티켓팅과 라이브 스트리밍을 통합한 OTT 플랫폼 — MSA 9개 서비스</div>
-<div class="proj-role"><strong>담당</strong> &nbsp;티켓 서비스 · 스트리밍 서비스 구현 &nbsp;·&nbsp; 데일리 스크럼 진행 &nbsp;·&nbsp; 일정 관리</div>
+<div class="proj-role"><strong>ticket-service · streaming-service 담당</strong> &nbsp;·&nbsp; 결제·입장권 정합성 설계 · 보상 트랜잭션 흐름 구현 (PO · 팀장)</div>
 <ul class="bullets">
   <li>MSA 9개 서비스 + Apache Kafka 비동기 메시징으로 서비스 간 결합도 분리</li>
   <li>Redis 대기열 · 재고 관리로 선착순 티켓팅 구현 (동시성 제어)</li>
@@ -306,35 +306,29 @@
   <div class="ts-body">
     <div class="ts-section"><strong>문제</strong>
       <ul class="ts-list">
-        <li>@Transactional 안에서 Redis 갱신 · HTTP 호출 · Kafka 발행 혼재 → DB 롤백 후에도 부수 효과 잔존</li>
-        <li>환불: 쿠키 HTTP 환불 성공 → 티켓 삭제 실패 → 재환불 가능 상태</li>
-        <li>티켓팅 시작: Redis 5개 키 시드 → schedule 저장 실패 → 대기열만 열린 상태</li>
+        <li>@Transactional 안에 Redis 갱신·HTTP 호출·Kafka 발행이 섞여 있어 DB 롤백 후에도 부수 효과가 남음</li>
+        <li>환불 흐름: 쿠키 HTTP 환불 성공 → 티켓 삭제 실패 → 재환불이 가능한 상태가 됨</li>
+        <li>티켓팅 시작 흐름: Redis 5개 키 시드 성공 → schedule 저장 실패 → 대기열만 열린 채 방치됨</li>
       </ul>
     </div>
     <div class="ts-section"><strong>해결</strong>
       <ul class="ts-list">
-        <li>DB 외 부수 효과를 @TransactionalEventListener(AFTER_COMMIT)로 분리 — 커밋 확정 후 실행</li>
-        <li>먼저 일어나는 HTTP 차감은 TransactionSynchronization.afterCompletion(STATUS_ROLLED_BACK) 콜백에 보상 환불 등록</li>
-        <li>핸들러 내 독립 부수 효과(쿠키 환불 / stock 복구 / queue.drain 발행)는 try-catch로 격리</li>
+        <li>DB 외 부수 효과를 <strong>@TransactionalEventListener(AFTER_COMMIT)</strong>로 <strong>분리</strong>해 커밋이 확정된 뒤에만 실행되도록 함</li>
+        <li>트랜잭션보다 먼저 수행되는 HTTP 차감은 TransactionSynchronization.afterCompletion(STATUS_ROLLED_BACK) 콜백에 <strong>보상 환불을 등록</strong></li>
+        <li>핸들러 내 독립 부수 효과(쿠키 환불 / stock 복구 / queue.drain 발행)는 try-catch로 격리해 부분 실패가 전파되지 않게 막음</li>
       </ul>
     </div>
     <div class="ts-section"><strong>결과</strong>
       <ul class="ts-list">
-        <li>Redis · DB · HTTP가 갈라지는 시나리오 전반에서 정합성 유지</li>
-        <li>팀 이슈 트래킹 기준 TX 7건 중 6건 · KFK 5건 전수 RESOLVED</li>
-        <li>큐 드레인은 @Async 풀 고갈을 계기로 Kafka 컨슈머(QueueDrainConsumer concurrency=4)로 전환 → 백프레셔 안정화</li>
+        <li>Redis·DB·HTTP가 갈라지는 시나리오 전반에서 정합성 유지됨</li>
+        <li>팀 이슈 트래킹 기준 <strong>TX 7건 중 6건·KFK 5건 전수 RESOLVED</strong></li>
+        <li>큐 드레인은 @Async 풀 고갈을 계기로 <strong>Kafka</strong> 컨슈머(QueueDrainConsumer concurrency=4)로 전환해 백프레셔 안정화</li>
       </ul>
     </div>
   </div>
 </div>
-<div class="tags">
-  <span class="tag">Java 21</span> <span class="tag">Spring Boot 4.0.4</span> <span class="tag">Spring Cloud Gateway</span>
-  <span class="tag">PostgreSQL 18</span> <span class="tag">Redis 7</span> <span class="tag">Kafka (KRaft)</span>
-  <span class="tag">Elasticsearch 8</span> <span class="tag">Quartz</span> <span class="tag">Spring AI</span>
-  <span class="tag">ffmpeg HLS</span> <span class="tag">Kubernetes (Helm)</span> <span class="tag">GitHub Actions</span>
-</div>
 
-<hr class="divider" style="margin-top:10px;" />
+<hr class="divider" />
 
 <!-- 동네마켓 -->
 <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px; margin-top:10px;">
@@ -346,8 +340,8 @@
     </td>
   </tr>
 </table>
-<div class="proj-desc">고객 · 로컬 마트 · 라이더 · 관리자를 잇는 동네 배송 플랫폼</div>
-<div class="proj-role"><strong>담당</strong> &nbsp;PO 데일리 스크럼 주관 · 의견 중재 &nbsp;·&nbsp; 라이더 모듈 · 위치 기반 상점 검색 구현</div>
+<div class="proj-desc">고객 · 지역 상권 · 라이더 · 관리자를 잇는 범용 지역 배송 플랫폼</div>
+<div class="proj-role"><strong>라이더 모듈 · 위치 기반 상점 검색 담당</strong> &nbsp;·&nbsp; Redis GEO 배차 · 분산 락 구현 (PO · 팀장)</div>
 <ul class="bullets">
   <li>PostGIS 기반 가게 위치 · 사용자 현재 위치를 활용한 거리 필터링</li>
   <li>라이더 실시간 좌표를 Redis GEO로 관리, 픽업지 10km 이내 라이더에 SSE 발행</li>
@@ -358,130 +352,29 @@
   <div class="ts-body">
     <div class="ts-section"><strong>문제</strong>
       <ul class="ts-list">
-        <li>실시간 라이더 좌표를 3~5초 주기로 PostgreSQL에 갱신 → 디스크 I/O 폭증</li>
-        <li>Row-level Lock 경합으로 피크 타임 API 응답 지연</li>
-        <li>휘발성 좌표가 DB 커넥션을 점유 → 결제 · 주문 처리에까지 영향 확산</li>
+        <li>라이더 실시간 좌표를 3~5초 주기로 PostgreSQL에 갱신하자 디스크 I/O가 폭증함</li>
+        <li>Row-level Lock 경합으로 피크 타임 API 응답이 지연됨</li>
+        <li>휘발성 좌표가 DB 커넥션을 점유하면서 결제·주문 처리까지 영향이 번짐</li>
       </ul>
     </div>
     <div class="ts-section"><strong>해결</strong>
       <ul class="ts-list">
-        <li>실시간 좌표를 Redis로 이관 (영속성보다 최신성이 중요한 휘발성 데이터로 분류)</li>
-        <li>Redis GEO search로 픽업지 10km 이내 라이더를 메모리 내 O(log N) 추출 후 SSE 푸시</li>
-        <li>동일 배달건 다중 수락은 Redis 분산 락(setIfAbsent, TTL 5초)으로 원자성 보장</li>
-        <li>라이더별 동시 배달 3건 제한은 Redis SET · SCARD O(1) 카운팅, 종료 시 즉시 삭제 + maxmemory allkeys-lru</li>
+        <li>실시간 좌표를 Redis로 이관 — 영속성보다 최신성이 중요한 휘발성 데이터로 분류한 결과</li>
+        <li><strong>Redis GEO search</strong>로 픽업지 10km 이내 라이더를 메모리 내 O(log N) 추출 후 SSE 푸시</li>
+        <li>동일 배달건 다중 수락은 <strong>Redis 분산 락</strong>(setIfAbsent, TTL 5초)으로 원자성을 보장</li>
+        <li>라이더별 동시 배달 3건 제한은 Redis SET·SCARD <strong>O(1)</strong> 카운팅으로 처리, 종료 시 즉시 삭제 + maxmemory allkeys-lru 적용</li>
       </ul>
     </div>
     <div class="ts-section"><strong>결과</strong>
       <ul class="ts-list">
-        <li>위치 업데이트 쿼리를 RDBMS → Redis로 옮겨 DB 쓰기 부하 약 90% 절감 (위치 업데이트 비중 기준)</li>
-        <li>메모리 기반 연산으로 라이더 주변 목록 렌더링 응답 속도 향상</li>
-        <li>분산 락 + Atomic Counter로 중복 배차 · 동시 배달 제한 위반 차단</li>
+        <li>위치 업데이트 쿼리를 RDBMS → Redis로 옮겨 DB 쓰기 부하 <strong>약 90% 절감</strong> (위치 업데이트 호출 건수 대비 RDBMS 쓰기 제거 비율 기준)</li>
+        <li>메모리 기반 연산으로 라이더 주변 목록 렌더링 응답 속도가 개선됨</li>
+        <li><strong>분산 락</strong> + Atomic Counter로 중복 배차·동시 배달 제한 위반을 차단함</li>
       </ul>
     </div>
   </div>
 </div>
-<div class="tags">
-  <span class="tag">Java 21</span> <span class="tag">Spring Boot 3.5</span> <span class="tag">Spring Batch 5</span>
-  <span class="tag">PostgreSQL 16 + PostGIS</span> <span class="tag">Redis 7 Cluster</span>
-  <span class="tag">OpenFeign</span> <span class="tag">Toss Payments</span>
-  <span class="tag">AWS</span> <span class="tag">Docker</span> <span class="tag">GitHub Actions</span>
-</div>
 
-<hr class="divider" style="margin-top:10px;" />
-
-<!-- Cinema -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px; margin-top:10px;">
-  <tr>
-    <td valign="top" class="proj-name">Cinema</td>
-    <td width="220" valign="top" class="proj-meta">
-      2026.01.12 ~ 2026.01.21 &nbsp;·&nbsp; 팀원 &nbsp;·&nbsp; lion-team4 &nbsp;·&nbsp;
-      <a href="https://github.com/corinB/cinema">GitHub</a>
-    </td>
-  </tr>
-</table>
-<div class="proj-desc">서버 기준 시간으로 동시에 시청·채팅하는 그룹 상영 + 자동 정산 플랫폼 — 이후 CineStream으로 구조 확장</div>
-<div class="proj-role"><strong>담당</strong> &nbsp;토스 PG 연동 &nbsp;·&nbsp; 구독 시스템 &nbsp;·&nbsp; 리뷰 관리 &nbsp;·&nbsp; 콘텐츠/스케줄 검색 (QueryDSL)</div>
-<ul class="bullets">
-  <li>토스 PG 연동 + 구독 시스템 결제·갱신 흐름 구현</li>
-  <li>리뷰 관리 도메인 구현</li>
-  <li>QueryDSL 기반 콘텐츠/스케줄 동적 검색·페이지네이션</li>
-</ul>
-<div class="ts">
-  <div class="ts-head">트러블슈팅</div>
-  <div class="ts-body">
-    <div class="ts-section"><strong>문제</strong>
-      <ul class="ts-list">
-        <li>Spring Data <code>Page&lt;T&gt;</code>로 페이지네이션 반환 시 데이터 조회 외에 count 쿼리가 매 호출마다 추가 발생</li>
-        <li>검색 · 무한 스크롤처럼 전체 페이지 수가 필요 없는 화면에서도 불필요한 연산이 매번 들어감</li>
-      </ul>
-    </div>
-    <div class="ts-section"><strong>해결</strong>
-      <ul class="ts-list">
-        <li><code>Page</code> 대신 <code>Slice&lt;T&gt;</code> 사용 — pageSize + 1만 조회해 hasNext 여부만 판단, count 쿼리 발생 없음</li>
-        <li>다음 페이지 존재 여부만 알면 충분한 검색 화면 요구사항과 자연스럽게 부합</li>
-      </ul>
-    </div>
-    <div class="ts-section"><strong>결과</strong>
-      <ul class="ts-list">
-        <li>응답 1건당 count 쿼리 1회 제거 → 단일 쿼리로 단순화</li>
-        <li>검색 트래픽이 늘수록 절약 효과가 누적되는 구조</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="tags">
-  <span class="tag">Java 21</span> <span class="tag">Spring Boot 3.5</span> <span class="tag">QueryDSL</span>
-  <span class="tag">MySQL 8</span> <span class="tag">Next.js 16</span> <span class="tag">STOMP / WebSocket</span>
-  <span class="tag">FFmpeg HLS</span> <span class="tag">Spring Batch</span> <span class="tag">Docker</span>
-</div>
-
-<hr class="divider" style="margin-top:10px;" />
-
-<!-- Opene -->
-<table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-bottom:4px; margin-top:10px;">
-  <tr>
-    <td valign="top" class="proj-name">Opene</td>
-    <td width="220" valign="top" class="proj-meta">
-      2024 &nbsp;·&nbsp; PO · 팀장 &nbsp;·&nbsp;
-      <a href="https://github.com/corinB/Opene">GitHub</a>
-    </td>
-  </tr>
-</table>
-<div class="proj-desc">Spring Boot 백엔드와 Python/Flask·YOLOv5 추론을 잇는 이종 스택 통합 웹앱 — 첫 백엔드 협업 프로젝트</div>
-<div class="proj-role"><strong>담당</strong> &nbsp;PO 협업 일정·스코프 조율 &nbsp;·&nbsp; Spring Boot ↔ Flask 이종 런타임 연동 설계 · 구현</div>
-<ul class="bullets">
-  <li>문제 해결을 위해 도구를 가리지 않음 — Java 메인 스택 위에 Python/ML 런타임 직접 도입</li>
-  <li>Spring Boot(:8080) ↔ Flask(:5000) 연동: 이미지 업로드 → YOLOv5 추론 → KMeans RGB 추출 → 추천 응답</li>
-  <li>PO로서 5개 스타일 카테고리 · 약 2,914장 데이터셋 스코프 정의, 팀 일정 조율</li>
-</ul>
-<div class="ts">
-  <div class="ts-head">트러블슈팅</div>
-  <div class="ts-body">
-    <div class="ts-section"><strong>문제</strong>
-      <ul class="ts-list">
-        <li>사진별 상의 · 하의 색상 정보를 어떤 방식으로 저장 · 검색할지 막막</li>
-        <li>당시(2024) 벡터 DB · 임베딩 유사도 검색이라는 개념을 인지하지 못한 상태</li>
-      </ul>
-    </div>
-    <div class="ts-section"><strong>해결</strong>
-      <ul class="ts-list">
-        <li>RDB 테이블에 사진별 상의 · 하의 RGB 값을 직접 컬럼으로 저장</li>
-        <li>추천 요청 시 입력 이미지 RGB와 테이블 값을 비교해 유사도 계산</li>
-      </ul>
-    </div>
-    <div class="ts-section"><strong>회고</strong>
-      <ul class="ts-list">
-        <li>단순 컬럼 비교로 컬러 매칭 추천 기능은 정상 동작</li>
-        <li>이후 벡터 DB · 임베딩 패턴을 학습하며 같은 문제를 더 적합한 자료구조로 풀 수 있다는 것을 확인</li>
-      </ul>
-    </div>
-  </div>
-</div>
-<div class="tags">
-  <span class="tag">Spring Boot 3.1</span> <span class="tag">Java 17</span> <span class="tag">Thymeleaf</span>
-  <span class="tag">Flask 2.x (Python 3.9)</span> <span class="tag">PyTorch 2.3</span>
-  <span class="tag">YOLOv5</span> <span class="tag">KMeans (scikit-learn)</span>
-</div>
 
 </body>
 </html>
