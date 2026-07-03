@@ -151,3 +151,175 @@
 - `src/components/Contact.jsx` line 85: `useTransform`이 `map` 콜백 안에서 호출됨 — Hook 규칙 위반 우려. 별도 PR로.
 - `profile.strengths` 8개 활용처 — 이력서 PDF 또는 인터뷰 초안에 활용
 - 다크모드 액센트(시안+보라+핑크) 단순화 — 이번엔 유지, 후속 결정
+
+---
+
+## PR-11 — Rallit 이력서 반영 + AI 활용 이야기 제거
+
+- [x] `src/data/profile.js`: 히어로·소개·강점에서 AI 중심 표현 제거
+- [x] `src/data/projects.js`: AI 활용 프로젝트/슬라이드 데이터 제거, 백엔드 프로젝트 중심 재정렬
+- [x] `src/components/ProjectDetail.jsx`: AI 활용 슬라이드 렌더링 제거
+- [x] `public/resume.html`: Rallit PDF 기준으로 이력서 재구성
+- [x] `public/resume.pdf`: 새 이력서 HTML 기준으로 재생성, PDF 텍스트·렌더링 확인
+- [x] `npm run build` 통과 확인
+
+---
+
+## PR-12 — CineStream·동네마켓 상세화 + 프로젝트 섹션 개편
+
+- [x] `src/data/projects.js`: CineStream·동네마켓 2개만 남기고 읽기용 상세 데이터로 재구성
+- [x] `Projects.jsx`: 카드/모달 대신 본문형 프로젝트 섹션으로 교체
+- [x] `ProjectCard.jsx`·`ProjectDetail.jsx` 제거 및 `mermaid` 의존성 정리
+- [x] `public/resume.html`: 프로젝트 섹션을 2개 프로젝트 중심으로 상세화
+- [x] `public/resume.pdf`: HTML 기준 재생성 및 렌더링 확인
+- [x] `npm ci` 재현 확인 (`tmp/ci-check` 클린 폴더에서 확인)
+- [x] `npm run build` 통과 확인
+- [x] 데스크톱/모바일 Projects 섹션 시각 확인
+- [x] Projects 본문 위아래 빈공간 축소 (Page Feedback 반영)
+---
+
+## PR-12 Feedback - Projects readability pass
+
+- [x] Overview/Role 상세화, 프로젝트별 기술스택 제거, 단일 스크롤 레이아웃 전환
+- [x] Evidence를 그래프/흐름/비교 시각 요소로 표현
+- [x] 개선 항목을 기존 상태 → 개선 방식 → 결과 구조로 정리
+- [x] Evidence/Before 섹션 분리 제거, 관련 설명 문단 안에 시각 요소 통합
+---
+
+## PR-12 Feedback - Scenario visuals
+
+- [x] Projects 시각자료를 정적 카드에서 동적 시나리오 다이어그램으로 교체
+- [x] CineStream 대기열/보상/스트리밍 권한 흐름 애니메이션 구현
+- [x] 동네마켓 GEO 배차/분산 락/알림 정산 흐름 애니메이션 구현
+- [x] 데스크톱·모바일·reduced motion 검증
+
+---
+
+## PR-13 Projects visual reinforcement
+
+- [x] `Projects.jsx`: move scenario text below visuals and rebuild weak visuals as branch/radial/state-flow diagrams
+- [x] `globals.css`: add scenario animation, mobile layout, and reduced-motion support
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+
+---
+
+## PR-14 Projects timeline visual pass
+
+- [x] `Projects.jsx`: replace compensation/session visuals with time-based request timeline diagrams
+- [x] `globals.css`: replace old branch/session lane CSS with timeline packet animations
+- [x] `projects.js`: remove dongne-market notification/settlement pipeline section per page feedback
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+
+---
+
+## PR-15 Projects compression readability pass
+
+- [x] `projects.js`: compress CineStream overview/role, shorten scenario summaries, refocus dongne-market role
+- [x] `Projects.jsx`: convert session token visual to parallel HLS/STOMP validation and add compensation event anchor
+- [x] `globals.css`: add session branch visual styles, compact scenario summaries, mobile/reduced-motion support
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+
+---
+
+## PR-16 Projects visual pruning pass
+
+- [x] `projects.js`: keep overviews project-only and reduce scenario visuals to 3 core flows
+- [x] `Projects.jsx`: remove weak/unused visuals and add combined integrity/dispatch diagrams
+- [x] `globals.css`: replace old scenario CSS with only active visual styles
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+
+---
+
+## PR-17 Projects diagram clarity and cleanup pass
+
+- [!] 취소: 사용자가 줄이기 전 상태가 더 낫다고 피드백함. 다음 방향 확정 후 새 작업으로 진행.
+
+---
+
+## PR-18 Projects richer visuals restore pass
+
+- [x] `projects.js`: restore detailed scenario sections for CineStream and dongne-market
+- [x] `Projects.jsx`: restore 7 visual components with targeted readability fixes
+- [x] `globals.css`: restore multi-scenario styles without old unused leftovers
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+
+---
+
+## PR-19 Projects visual refactor and cleanup pass
+
+- [x] `Projects.jsx`: scenario rendering layers and shared visual primitives cleanup
+- [x] `projects.js`: scenario data fields normalize to active 7 scenario types
+- [x] `globals.css`: remove stale visual CSS and rebuild active scenario styles
+- [x] `npm run build` verification
+- [x] desktop/mobile/overflow/reduced-motion visual review
+- [x] Queue visual spacing feedback: separate gate badge from latency number
+- [x] Queue visual overlap feedback: separate moving dots from gate badge in dark theme
+
+---
+
+## PR-20 Projects maintenance refactor and cleanup
+
+- [x] `Projects.jsx`: keep layout-only rendering and move scenario visuals into a dedicated module
+- [x] `projects.js`: move visual labels into scenario diagram data
+- [x] `globals.css`: remove unused modal and stale visual styles
+- [x] `package.json`/`package-lock.json`: remove unused `gsap`
+- [!] root `npm ci`/`npm run build` verification: blocked by locked native files in `node_modules`; clean copy at `C:\tmp\ghio-pr20-build` passed `npm ci` and `npm run build`
+- [x] desktop/mobile/overflow/reduced-motion/dark queue visual review
+
+---
+
+## PR-21 — 포트폴리오 피드백 회고 기반 후속 작업 큐
+
+> 목적: 현재 포트폴리오를 다시 피드백/회고한 뒤, 다음 중간 단계 모델이 바로 이어서 처리할 수 있는 우선순위 TODO를 만든다.
+>
+> 작업 가이드: `NEXT_MODEL_WORK_GUIDE.md`
+>
+> 확인 근거:
+> - `npm.cmd run build` 통과
+> - Playwright + Edge headless로 1440x900, 390x900, light/dark 화면 확인
+> - 모바일 390px 기준 `clientWidth=390`, `scrollWidth=437`, 메뉴 버튼 `right=417`로 오른쪽 잘림 확인
+
+### 이번 회고 산출물
+
+- [x] 현재 Hero/About/Approach/Projects/Nav/Contact/CSS 구조 점검
+- [x] 1440x900, 390x900, light/dark 화면 기준 피드백 정리
+- [x] 다음 모델용 작업 가이드 문서 작성: `NEXT_MODEL_WORK_GUIDE.md`
+- [x] 반영 우선순위와 TODO 큐 작성
+
+### P0 — 기능/첫인상 버그
+
+- [x] `src/components/Nav.jsx`: 모바일 헤더 오른쪽 잘림 및 가로 오버플로우 수정
+- [x] `src/components/Nav.jsx`: `TypingText`, `executingCmd`, `root@dev:~$`, `System Navigation` 터미널 오버레이 제거
+- [x] `src/components/Nav.jsx`: 내비게이션 클릭 지연(1200ms) 제거, 즉시 스크롤로 단순화
+- [x] 검증: 390px/430px/768px에서 `document.documentElement.scrollWidth === document.documentElement.clientWidth`
+
+### P1 — 리크루터 5-10초 읽기 흐름
+
+- [ ] `Approach` 독립 섹션 유지 여부 결정: 유지한다면 압축, 가능하면 About 하단 요약으로 병합
+- [ ] `src/components/Nav.jsx`: `Approach`를 병합하면 nav 링크에서도 제거
+- [ ] `src/data/profile.js` + `Hero.jsx`: 첫 화면 stack chip 수 축소, `featuredTech`와 Lead 배지만 강하게 노출
+- [ ] `src/data/projects.js`: 각 프로젝트 `overview`/`role` 첫 노출 문단을 더 짧게 압축
+- [ ] `src/components/Projects.jsx`: 프로젝트 첫 화면에서 "도메인 / 문제 / 개선 결과"가 먼저 보이도록 스캔 구조 점검
+
+### P2 — 디자인 톤/유지보수 정리
+
+- [ ] `src/styles/tokens.css`: 다크모드 시안·보라·핑크 강조를 줄이고 차분한 백엔드 포트폴리오 톤으로 조정
+- [ ] 불필요한 코드 클린업: 사용하지 않는 import/state/helper component/dead branch/과거 구조 주석 제거
+- [ ] `src/styles/globals.css`: 현재 JSX에서 참조하지 않는 오래된 `.hero`, `.nav`, `.about-*`, `.contact-*`, `.custom-scrollbar` 계열 스타일 삭제
+- [ ] `AGENTS.md`: 현재 코드와 맞지 않는 `ProjectDetail.jsx`, `mermaid`, `gsap`, section id 설명 갱신
+- [ ] `improvement.md`: 과거 계획 중 이미 폐기된 카드/모달/AI 활용 슬라이드 설명을 현재 구조 기준으로 보정하거나 archive 처리
+- [ ] `Nav.jsx`/`ThemeToggle.jsx`: 모바일 메뉴와 테마 버튼 `aria-label`, `aria-expanded` 등 접근성 보강
+
+### 공통 검증
+
+- [x] source 변경 후 `npm.cmd run build` 통과
+- [x] 1440x900 light/dark Hero 확인
+- [x] 390x900 light/dark Hero와 모바일 메뉴 확인
+- [ ] Projects 섹션 첫 진입 화면과 7개 scenario visual 오버플로우 확인
+- [x] 제거한 기능의 import/state/CSS/문서 흔적이 남지 않았는지 `rg`로 확인
+- [x] 측정값 수정 금지: `3,152 ms`, `2,017 ms`, `약 36%`, `p95` 등은 reference/원측정 자료 확인 전 변경하지 않음
